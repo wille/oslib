@@ -12,12 +12,17 @@ public enum Distro {
 	ARCH("arch"),
 	GENTOO("gentoo"),
 	RASPBIAN("raspbian"),
-	STEAMOS("steamos");
+	STEAMOS("steamos"),
+	UNKNOWN("");
 	
 	private String s;
 	
 	private Distro(String s) {
 		this.s = s;
+	}
+	
+	public String getIdentifier() {
+		return this.s;
 	}
 	
 }

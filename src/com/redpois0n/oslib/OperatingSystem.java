@@ -57,6 +57,47 @@ public enum OperatingSystem {
 	public static OperatingSystem getOperatingSystem() {
 		return getOperatingSystem(System.getProperty("os.name"));
 	}
+	
+	/**
+	 * Returns current linux distribution
+	 * @return null if not running on Linux
+	 */
+	public static Distro getDistro() {
+		String search = getShortOperatingSystem();
+		Distro distro;
+		
+		if (OperatingSystem.getOperatingSystem() != LINUX) {
+			return null;
+		}
+		
+		if (search.toLowerCase().contains("ubuntu")) {
+			distro = Distro.UBUNTU;
+		} else if (search.toLowerCase().contains("kali") || search.toLowerCase().contains("backtrack")) {
+			distro = Distro.KALI;
+		} else if (search.toLowerCase().contains("centos")) {
+			distro = Distro.CENTOS;
+		} else if (search.toLowerCase().contains("debian")) {
+			distro = Distro.DEBIAN;
+		} else if (search.toLowerCase().contains("elementary")) {
+			distro = Distro.ELEMENTARYOS;
+		} else if (search.toLowerCase().contains("mint")) {
+			distro = Distro.MINT;
+		} else if (search.toLowerCase().contains("slackware")) {
+			distro = Distro.SLACKWARE;
+		} else if (search.toLowerCase().contains("arch")) {
+			distro = Distro.ARCH;
+		} else if (search.toLowerCase().contains("gentoo")) {
+			distro = Distro.GENTOO;
+		} else if (search.toLowerCase().contains("raspbian")) {
+			distro = Distro.RASPBIAN;
+		} else if (search.toLowerCase().contains("steam")) {
+			distro = Distro.STEAMOS;
+		} else {
+			distro = Distro.UNKNOWN;
+		}
+		
+		return distro;
+	}
 
 	/**
 	 * Gets basic operating system string

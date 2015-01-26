@@ -4,6 +4,7 @@ public enum Distro {
 	
 	UBUNTU("ubuntu"),
 	KALI("kali"),
+	BACKTRACK("backtrack"),
 	CENTOS("centos"),
 	DEBIAN("debian"),
 	ELEMENTARYOS("elementary os"),

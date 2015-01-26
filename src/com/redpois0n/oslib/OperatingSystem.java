@@ -75,8 +75,10 @@ public enum OperatingSystem {
 		
 		if (search.toLowerCase().contains("ubuntu")) {
 			distro = Distro.UBUNTU;
-		} else if (search.toLowerCase().contains("kali") || search.toLowerCase().contains("backtrack")) {
+		} else if (search.toLowerCase().contains("kali")) {
 			distro = Distro.KALI;
+		} else if (search.toLowerCase().contains("backtrack")) {
+			distro = Distro.BACKTRACK;
 		} else if (search.toLowerCase().contains("centos")) {
 			distro = Distro.CENTOS;
 		} else if (search.toLowerCase().contains("debian")) {

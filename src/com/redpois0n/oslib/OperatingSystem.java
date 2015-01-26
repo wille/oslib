@@ -19,6 +19,11 @@ public enum OperatingSystem {
 	private static String shortName;
 	private static String longName;
 
+	/**
+	 * Gets the operating system (Not linux distro)
+	 * @param str String like System.getProperty("os.name");
+	 * @return
+	 */
 	public static OperatingSystem getOperatingSystem(String str) {
 		str = str.toLowerCase();
 
@@ -45,10 +50,18 @@ public enum OperatingSystem {
 		return os;
 	}
 
+	/**
+	 * Gets this machines operating system
+	 * @return
+	 */
 	public static OperatingSystem getOperatingSystem() {
 		return getOperatingSystem(System.getProperty("os.name"));
 	}
 
+	/**
+	 * Gets basic operating system string
+	 * @return Few examples are "Windows 8.1", "Ubuntu Linux" and "Mac OS X Yosemite"
+	 */
 	public static String getShortOperatingSystem() {
 		if (shortName == null) {
 			if (OperatingSystem.getOperatingSystem() == OperatingSystem.LINUX) {
@@ -130,6 +143,10 @@ public enum OperatingSystem {
 		return shortName;
 	}
 
+	/**
+	 * Gets long operating system string
+	 * @return Will return "uname -a" on Linux, on other systems os.name + os.version + os.arch
+	 */
 	public static String getLongOperatingSystem() {
 		if (longName == null) {
 			if (OperatingSystem.getOperatingSystem() == OperatingSystem.LINUX) {
@@ -146,6 +163,11 @@ public enum OperatingSystem {
 		return longName;
 	}
 
+	/**
+	 * Gets arch, either 64-bit or x86
+	 * @param arch
+	 * @return
+	 */
 	public static String getArch(String arch) {
 		if (arch.equalsIgnoreCase("x86") || arch.equalsIgnoreCase("i386") || arch.equalsIgnoreCase("i486") || arch.equalsIgnoreCase("i586") || arch.equalsIgnoreCase("i686")) {
 			arch = "x86";

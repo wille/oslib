@@ -59,16 +59,19 @@ public enum OperatingSystem {
 	}
 	
 	/**
-	 * Returns current linux distribution
-	 * @return null if not running on Linux
+	 * Gets this machine linux distro
+	 * @return
 	 */
 	public static Distro getDistro() {
-		String search = getShortOperatingSystem();
+		return getDistro(getShortOperatingSystem());
+	}
+	
+	/**
+	 * Returns linux distro found from search string
+	 * @return Distro.UNKNOWN if no known distro is found, null if not even Linux is detected from search
+	 */
+	public static Distro getDistro(String search) {
 		Distro distro;
-		
-		if (OperatingSystem.getOperatingSystem() != LINUX) {
-			return null;
-		}
 		
 		if (search.toLowerCase().contains("ubuntu")) {
 			distro = Distro.UBUNTU;
@@ -92,6 +95,8 @@ public enum OperatingSystem {
 			distro = Distro.RASPBIAN;
 		} else if (search.toLowerCase().contains("steam")) {
 			distro = Distro.STEAMOS;
+		} else if (OperatingSystem.getOperatingSystem(search) != LINUX) {
+			distro = null;
 		} else {
 			distro = Distro.UNKNOWN;
 		}

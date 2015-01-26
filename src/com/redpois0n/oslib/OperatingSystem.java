@@ -209,16 +209,24 @@ public enum OperatingSystem {
 	 * @param arch
 	 * @return
 	 */
-	public static String getArch(String arch) {
-		if (arch.equalsIgnoreCase("x86") || arch.equalsIgnoreCase("i386") || arch.equalsIgnoreCase("i486") || arch.equalsIgnoreCase("i586") || arch.equalsIgnoreCase("i686")) {
-			arch = "x86";
-		} else if (arch.equalsIgnoreCase("x86_64") || arch.equalsIgnoreCase("amd64") || arch.equalsIgnoreCase("k8")) {
-			arch = "64-bit";
+	public static Arch getArch(String s) {
+		Arch arch;
+		
+		if (s.equalsIgnoreCase("x86") || s.equalsIgnoreCase("i386") || s.equalsIgnoreCase("i486") || s.equalsIgnoreCase("i586") || s.equalsIgnoreCase("i686")) {
+			arch = Arch.x86;
+		} else if (s.equalsIgnoreCase("x86_64") || s.equalsIgnoreCase("amd64") || s.equalsIgnoreCase("k8")) {
+			arch = Arch.x86_64;
+		} else {
+			arch = Arch.UNKNOWN;
 		}
 		
 		return arch;
 	}
 	
+	/**
+	 * Runs the command "uname -a" and reads the first line
+	 * @return
+	 */
 	public static String getUname() {
 		String uname = null;
 		

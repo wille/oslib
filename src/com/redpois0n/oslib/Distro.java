@@ -1,6 +1,6 @@
 package com.redpois0n.oslib;
 
-public enum Distros {
+public enum Distro {
 	
 	UBUNTU("ubuntu"),
 	KALI("kali"),
@@ -16,7 +16,7 @@ public enum Distros {
 	
 	private String s;
 	
-	private Distros(String s) {
+	private Distro(String s) {
 		this.s = s;
 	}
 	

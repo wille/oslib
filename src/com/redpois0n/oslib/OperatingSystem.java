@@ -59,56 +59,8 @@ public enum OperatingSystem {
 	}
 	
 	/**
-	 * Gets this machine linux distro
-	 * @return
-	 */
-	public static Distro getDistro() {
-		return getDistro(getShortOperatingSystem());
-	}
-	
-	/**
-	 * Returns linux distro found from search string
-	 * @return Distro.UNKNOWN if no known distro is found, null if not even Linux is detected from search
-	 */
-	public static Distro getDistro(String search) {
-		Distro distro;
-		
-		if (search.toLowerCase().contains("ubuntu")) {
-			distro = Distro.UBUNTU;
-		} else if (search.toLowerCase().contains("kali")) {
-			distro = Distro.KALI;
-		} else if (search.toLowerCase().contains("backtrack")) {
-			distro = Distro.BACKTRACK;
-		} else if (search.toLowerCase().contains("centos")) {
-			distro = Distro.CENTOS;
-		} else if (search.toLowerCase().contains("debian")) {
-			distro = Distro.DEBIAN;
-		} else if (search.toLowerCase().contains("elementary")) {
-			distro = Distro.ELEMENTARYOS;
-		} else if (search.toLowerCase().contains("mint")) {
-			distro = Distro.MINT;
-		} else if (search.toLowerCase().contains("slackware")) {
-			distro = Distro.SLACKWARE;
-		} else if (search.toLowerCase().contains("arch")) {
-			distro = Distro.ARCH;
-		} else if (search.toLowerCase().contains("gentoo")) {
-			distro = Distro.GENTOO;
-		} else if (search.toLowerCase().contains("raspbian")) {
-			distro = Distro.RASPBIAN;
-		} else if (search.toLowerCase().contains("steam")) {
-			distro = Distro.STEAMOS;
-		} else if (OperatingSystem.getOperatingSystem(search) != LINUX) {
-			distro = null;
-		} else {
-			distro = Distro.UNKNOWN;
-		}
-		
-		return distro;
-	}
-
-	/**
 	 * Gets basic operating system string
-	 * @return Few examples are "Windows 8.1", "Ubuntu Linux" and "Mac OS X Yosemite"
+	 * @return Few examples are "Windows 8.1", "Ubuntu Linux" and "Mac OS X 10.10"
 	 */
 	public static String getShortOperatingSystem() {
 		if (shortName == null) {
@@ -201,35 +153,16 @@ public enum OperatingSystem {
 				longName = getUname();
 				
 				if (longName == null) {
-					longName = System.getProperty("os.name") + " " + System.getProperty("os.version") + " " + OperatingSystem.getArch(System.getProperty("os.arch"));		
+					longName = System.getProperty("os.name") + " " + System.getProperty("os.version") + " " + Arch.getArchString();		
 				}
 			} else {
-				longName = System.getProperty("os.name") + " " + System.getProperty("os.version") + " " + OperatingSystem.getArch(System.getProperty("os.arch"));
+				longName = System.getProperty("os.name") + " " + System.getProperty("os.version") + " " + Arch.getArchString();
 			}
 		}
 
 		return longName;
 	}
 
-	/**
-	 * Gets arch, either 64-bit or x86
-	 * @param arch
-	 * @return
-	 */
-	public static Arch getArch(String s) {
-		Arch arch;
-		
-		if (s.equalsIgnoreCase("x86") || s.equalsIgnoreCase("i386") || s.equalsIgnoreCase("i486") || s.equalsIgnoreCase("i586") || s.equalsIgnoreCase("i686")) {
-			arch = Arch.x86;
-		} else if (s.equalsIgnoreCase("x86_64") || s.equalsIgnoreCase("amd64") || s.equalsIgnoreCase("k8")) {
-			arch = Arch.x86_64;
-		} else {
-			arch = Arch.UNKNOWN;
-		}
-		
-		return arch;
-	}
-	
 	/**
 	 * Runs the command "uname -a" and reads the first line
 	 * @return

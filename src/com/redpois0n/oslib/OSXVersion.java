@@ -39,6 +39,14 @@ public enum OSXVersion {
 	}
 	
 	/**
+	 * Gets OSXVersion for this machine
+	 * @return
+	 */
+	public static OSXVersion getFromString() {
+		return getFromString(System.getProperty("os.version"));
+	}
+	
+	/**
 	 * Gets OSXVersion from string
 	 * @param search Can either be version or display name ("10.10", "yosemite")
 	 * @return

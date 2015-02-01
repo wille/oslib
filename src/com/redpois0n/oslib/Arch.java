@@ -41,4 +41,28 @@ public enum Arch {
 		return System.getProperty("os.arch");
 	}
 	
+	public static String getStringFromArch() {
+		return getStringFromArch(getArch(), getArchString());
+	}
+	
+	/**
+	 * Gets display string from arch
+	 * @param arch
+	 * @param defaults String to show if not any known arch is found
+	 * @return
+	 */
+	public static String getStringFromArch(Arch arch, String defaults) {
+		String s;
+		
+		if (arch == Arch.x86) {
+			s = "x86";
+		} else if (arch == Arch.x86_64) {
+			s = "x64";
+		} else {
+			s = defaults;
+		}
+		
+		return s;
+	}
+	
 }

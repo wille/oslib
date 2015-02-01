@@ -155,6 +155,8 @@ public enum OperatingSystem {
 				if (longName == null) {
 					longName = System.getProperty("os.name") + " " + System.getProperty("os.version") + " " + Arch.getArchString();		
 				}
+			} else if (OperatingSystem.getOperatingSystem() == OperatingSystem.OSX) {
+				longName = System.getProperty("os.name") + " " + System.getProperty("os.version") + " " + OSXVersion.getFromString().getSearch() + " " + Arch.getStringFromArch();
 			} else {
 				longName = System.getProperty("os.name") + " " + System.getProperty("os.version") + " " + Arch.getArchString();
 			}

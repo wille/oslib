@@ -53,7 +53,7 @@ public enum OSXVersion {
 	 */
 	public static OSXVersion getFromString(String search) {
 		for (OSXVersion v : OSXVersion.values()) {
-			if (v.getVersion().equalsIgnoreCase(search) || v.getSearch().contains(search)) {
+			if (v.getVersion().equalsIgnoreCase(search) || v.getSearch().toLowerCase().contains(search.toLowerCase())) {
 				return v;
 			}
 		}

@@ -14,6 +14,10 @@ public enum Distro {
 	GENTOO("gentoo"),
 	RASPBIAN("raspbian"),
 	STEAMOS("steamos"),
+	FEDORA("fedora"),
+	CRUNCHBANG("crunchbang"),
+	LXLE("lxle"),
+	MAGEIA("mageia"),
 	UNKNOWN("");
 	
 	private String s;
@@ -65,6 +69,14 @@ public enum Distro {
 			distro = RASPBIAN;
 		} else if (search.toLowerCase().contains("steam")) {
 			distro = STEAMOS;
+		} else if (search.toLowerCase().contains("fedora")) {
+			distro = FEDORA;
+		} else if (search.toLowerCase().contains("crunchbang")) {
+			distro = CRUNCHBANG;
+		} else if (search.toLowerCase().contains("lxle")) {
+			distro = LXLE;
+		} else if (search.toLowerCase().contains("mageia")) {
+			distro = MAGEIA;
 		} else if (OperatingSystem.getOperatingSystem(search) != OperatingSystem.LINUX) {
 			distro = null;
 		} else {

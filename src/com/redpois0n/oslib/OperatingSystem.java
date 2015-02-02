@@ -68,9 +68,16 @@ public enum OperatingSystem {
 				try {
 					String uname = getUname();
 					
+					/**
+					 * Returns distros that doesn't modify /etc/*-release
+					 */
 					if (uname != null) {
 						if (uname.toLowerCase().contains("raspbian")) {
 							return shortName = "Raspbian Linux";
+						} else if (uname.toLowerCase().contains("crunchbang")) {
+							return shortName = "Crunchbang Linux";
+						} else if (uname.toLowerCase().contains("lxle")) {
+							return shortName = "LXLE Linux";
 						}
 					}
 					

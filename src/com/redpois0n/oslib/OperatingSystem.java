@@ -10,7 +10,7 @@ public enum OperatingSystem {
 	WINDOWS("win"),
 	OSX("mac"),
 	LINUX("linux"),
-	SOLARIS("sunos", "solaris"),
+	SOLARIS("solaris", "sunos"),
 	FREEBSD("freebsd"),
 	OPENBSD("openbsd"),
 	ANDROID("android"),

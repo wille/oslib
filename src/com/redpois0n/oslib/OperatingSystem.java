@@ -7,18 +7,32 @@ import java.io.InputStreamReader;
 
 public enum OperatingSystem {
 
-	WINDOWS,
-	OSX,
-	LINUX,
-	SOLARIS,
-	FREEBSD,
-	OPENBSD,
-	ANDROID,
-	UNKNOWN;
+	WINDOWS("win"),
+	OSX("mac"),
+	LINUX("linux"),
+	SOLARIS("sunos", "solaris"),
+	FREEBSD("freebsd"),
+	OPENBSD("openbsd"),
+	ANDROID("android"),
+	UNKNOWN("unknown");
 
 	private static String shortName;
 	private static String longName;
-
+	
+	private String[] search;
+	
+	private OperatingSystem(String... search) {
+		this.search = search;
+	}
+	
+	public String[] getSearch() {
+		return this.search;
+	}
+	
+	public String getPrimarySearch() {
+		return this.search[0];
+	}
+	
 	/**
 	 * Gets the operating system (Not linux distro)
 	 * @param str String like System.getProperty("os.name");
@@ -27,24 +41,19 @@ public enum OperatingSystem {
 	public static OperatingSystem getOperatingSystem(String str) {
 		str = str.toLowerCase();
 
-		OperatingSystem os;
-
-		if (str.contains("win")) {
-			os = OperatingSystem.WINDOWS;
-		} else if (str.contains("mac")) {
-			os = OperatingSystem.OSX;
-		} else if (str.contains("linux")) {
-			os = OperatingSystem.LINUX;
-		} else if (str.contains("solaris") || str.contains("sunos")) {
-			os = OperatingSystem.SOLARIS;
-		} else if (str.contains("freebsd")) {
-			os = OperatingSystem.FREEBSD;
-		} else if (str.contains("android")) {
-			os = OperatingSystem.ANDROID;
-		} else if (str.contains("openbsd")) {
-			os = OperatingSystem.OPENBSD;
-		} else {
-			os = OperatingSystem.UNKNOWN;
+		OperatingSystem os = null;
+		
+		for (OperatingSystem o : OperatingSystem.values()) {
+			if (os != null) {
+				break;
+			}
+			
+			for (String s : o.getSearch()) {
+				if (str.contains(s)) {
+					os = o;
+					break;
+				}
+			}
 		}
 
 		return os;

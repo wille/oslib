@@ -13,7 +13,7 @@ public enum Distro {
 	ARCH("arch"),
 	GENTOO("gentoo"),
 	RASPBIAN("raspbian"),
-	STEAMOS("steamos"),
+	STEAMOS("steam"),
 	FEDORA("fedora"),
 	CRUNCHBANG("crunchbang"),
 	LXLE("lxle"),

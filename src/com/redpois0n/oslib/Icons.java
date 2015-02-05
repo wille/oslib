@@ -49,6 +49,8 @@ public class Icons {
 			} else {
 				icon = "dist_" + d.getIdentifier().replace(" ", "");
 			}
+		} else if (os == null){
+			icon = "os_unknown";
 		} else {
 			icon = "os_" + os.getPrimarySearch();
 		}

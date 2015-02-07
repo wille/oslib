@@ -57,5 +57,23 @@ public class Icons {
 		
 		return icon;
 	}
+	
+	public static String getIconFromStringOnly(String longs) {
+		OperatingSystem os = null;
+		
+		for (OperatingSystem o : OperatingSystem.values()) {
+			if (os != null) {
+				break;
+			}
+			for (String s : o.getSearch()) {
+				if (longs.toLowerCase().contains(s)) {
+					os = o;
+					break;
+				}
+			}
+		}
+		
+		return getIconString(os, longs);
+	}
 
 }

@@ -18,6 +18,7 @@ public enum Distro {
 	CRUNCHBANG("crunchbang"),
 	LXLE("lxle"),
 	MAGEIA("mageia"),
+	ALPINE("alpine"),
 	UNKNOWN("");
 	
 	private String s;

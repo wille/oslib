@@ -13,6 +13,7 @@ public enum OperatingSystem {
 	SOLARIS("solaris", "sunos"),
 	FREEBSD("freebsd"),
 	OPENBSD("openbsd"),
+	NETBSD("netbsd"),
 	ANDROID("android"),
 	UNKNOWN("unknown");
 

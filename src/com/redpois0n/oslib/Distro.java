@@ -46,39 +46,13 @@ public enum Distro {
 	public static Distro getDistro(String search) {
 		Distro distro;
 		
-		if (search.toLowerCase().contains("ubuntu")) {
-			distro = UBUNTU;
-		} else if (search.toLowerCase().contains("kali")) {
-			distro = KALI;
-		} else if (search.toLowerCase().contains("backtrack")) {
-			distro = BACKTRACK;
-		} else if (search.toLowerCase().contains("centos")) {
-			distro = CENTOS;
-		} else if (search.toLowerCase().contains("debian")) {
-			distro = DEBIAN;
-		} else if (search.toLowerCase().contains("elementary")) {
-			distro = ELEMENTARYOS;
-		} else if (search.toLowerCase().contains("mint")) {
-			distro = MINT;
-		} else if (search.toLowerCase().contains("slackware")) {
-			distro = SLACKWARE;
-		} else if (search.toLowerCase().contains("arch")) {
-			distro = ARCH;
-		} else if (search.toLowerCase().contains("gentoo")) {
-			distro = GENTOO;
-		} else if (search.toLowerCase().contains("raspbian")) {
-			distro = RASPBIAN;
-		} else if (search.toLowerCase().contains("steam")) {
-			distro = STEAMOS;
-		} else if (search.toLowerCase().contains("fedora")) {
-			distro = FEDORA;
-		} else if (search.toLowerCase().contains("crunchbang")) {
-			distro = CRUNCHBANG;
-		} else if (search.toLowerCase().contains("lxle")) {
-			distro = LXLE;
-		} else if (search.toLowerCase().contains("mageia")) {
-			distro = MAGEIA;
-		} else if (OperatingSystem.getOperatingSystem(search) != OperatingSystem.LINUX) {
+		for (Distro d : Distro.values()) {
+			if (search.toLowerCase().contains(d.getIdentifier())) {
+				return d;
+			}
+		}
+		
+		if (OperatingSystem.getOperatingSystem(search) != OperatingSystem.LINUX) {
 			distro = null;
 		} else {
 			distro = UNKNOWN;

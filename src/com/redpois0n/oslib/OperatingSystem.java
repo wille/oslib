@@ -22,6 +22,10 @@ public enum OperatingSystem {
 	
 	private String[] search;
 	
+	static {
+		longName = getUname();
+	}
+	
 	private OperatingSystem(String... search) {
 		this.search = search;
 	}
@@ -192,7 +196,7 @@ public enum OperatingSystem {
 		try {
 			Process p = Runtime.getRuntime().exec(new String[] { "uname", "-a"});
 			BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
-			longName = reader.readLine();
+			uname = reader.readLine();
 			reader.close();
 		} catch (Exception ex) {
 			ex.printStackTrace();

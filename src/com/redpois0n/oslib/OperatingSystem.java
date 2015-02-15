@@ -149,7 +149,7 @@ public enum OperatingSystem {
 					shortName = System.getProperty("os.name");
 				}
 			} else if (OperatingSystem.getOperatingSystem() == OperatingSystem.OSX) {
-				shortName = System.getProperty("os.name") + " " + System.getProperty("os.version");
+				shortName = System.getProperty("os.name") + " " + OSXVersion.getFromString(System.getProperty("os.version")).getDisplay();
 			} else if (OperatingSystem.getOperatingSystem() == OperatingSystem.SOLARIS) {
 				shortName = "Solaris"; // I prefer Solaris over SunOS
 			} else {

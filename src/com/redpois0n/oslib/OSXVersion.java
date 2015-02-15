@@ -2,17 +2,17 @@ package com.redpois0n.oslib;
 
 public enum OSXVersion {
 	
-	CHEETAH("cheetah", "10.0"),
-	PUMA("puma", "10.1"),
-	JAGUAR("jaguar", "10.2"),
-	PANTHER("panther", "10.3"),
-	TIGER("tiger", "10.4"),
-	LEOPARD("leopard", "10.5"),
-	SNOW_LEOPARD("snow leopard", "10.6"),
-	LION("lion", "10.7"),
-	MOUNTAIN_LION("mountain lion", "10.8"),
-	MAVERICKS("mavericks", "10.9"),
-	YOSEMITE("yosemite", "10.10");
+	CHEETAH("Cheetah", "10.0"),
+	PUMA("Puma", "10.1"),
+	JAGUAR("Jaguar", "10.2"),
+	PANTHER("Panther", "10.3"),
+	TIGER("Tiger", "10.4"),
+	LEOPARD("Leopard", "10.5"),
+	SNOW_LEOPARD("Snow Leopard", "10.6"),
+	LION("Lion", "10.7"),
+	MOUNTAIN_LION("Mountain Lion", "10.8"),
+	MAVERICKS("Mavericks", "10.9"),
+	YOSEMITE("Yosemite", "10.10");
 	
 	private String search;
 	private String version;
@@ -21,7 +21,11 @@ public enum OSXVersion {
 		this.search = search;
 		this.version = version;
 	}
-
+	
+	public String getDisplay() {
+		return search;
+	}
+	
 	/**
 	 * Version of OS X, such as 10.10
 	 * @return
@@ -35,7 +39,7 @@ public enum OSXVersion {
 	 * @return
 	 */
 	public String getSearch() {
-		return search;
+		return search.toLowerCase();
 	}
 	
 	/**

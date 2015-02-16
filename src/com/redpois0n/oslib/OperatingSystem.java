@@ -23,7 +23,9 @@ public enum OperatingSystem {
 	private String[] search;
 	
 	static {
-		longName = getUname();
+		if (getOperatingSystem() != WINDOWS) {
+			longName = getUname();
+		}
 	}
 	
 	private OperatingSystem(String... search) {
@@ -169,20 +171,16 @@ public enum OperatingSystem {
 	 * @return Will return "uname -a" on Linux, on other systems os.name + os.version + os.arch
 	 */
 	public static String getLongOperatingSystem() {
-		if (longName == null) {
-			if (OperatingSystem.getOperatingSystem() == OperatingSystem.LINUX) {
-				longName = getUname();
-				
-				if (longName == null) {
-					longName = System.getProperty("os.name") + " " + System.getProperty("os.version") + " " + Arch.getArchString();		
-				}
-			} else if (OperatingSystem.getOperatingSystem() == OperatingSystem.OSX) {
-				longName = System.getProperty("os.name") + " " + System.getProperty("os.version") + " " + OSXVersion.getFromString().getSearch() + " " + Arch.getStringFromArch();
-			} else {
+		if (OperatingSystem.getOperatingSystem() == OperatingSystem.LINUX) {
+			if (longName == null) {
 				longName = System.getProperty("os.name") + " " + System.getProperty("os.version") + " " + Arch.getArchString();
 			}
+		} else if (OperatingSystem.getOperatingSystem() == OperatingSystem.OSX) {
+			longName = System.getProperty("os.name") + " " + System.getProperty("os.version") + " " + OSXVersion.getFromString().getSearch() + " " + Arch.getStringFromArch();
+		} else {
+			longName = System.getProperty("os.name") + " " + System.getProperty("os.version") + " " + Arch.getArchString();
 		}
-
+		
 		return longName;
 	}
 

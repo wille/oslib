@@ -71,6 +71,9 @@ public enum OperatingSystem {
 	 * @return
 	 */
 	public static OperatingSystem getOperatingSystem() {
+		if (System.getProperty("java.vm.name").equalsIgnoreCase("Dalvik")) {
+			return ANDROID;
+		}
 		return getOperatingSystem(System.getProperty("os.name"));
 	}
 	
@@ -89,11 +92,15 @@ public enum OperatingSystem {
 					 */
 					if (uname != null) {
 						if (uname.toLowerCase().contains("raspbian")) {
-							return shortName = "Raspbian Linux";
+							shortName = "Raspbian Linux";
 						} else if (uname.toLowerCase().contains("crunchbang")) {
-							return shortName = "Crunchbang Linux";
+							shortName = "Crunchbang Linux";
 						} else if (uname.toLowerCase().contains("lxle")) {
-							return shortName = "LXLE Linux";
+							shortName = "LXLE Linux";
+						}
+						
+						if (shortName != null) {
+							return shortName;
 						}
 					}
 					

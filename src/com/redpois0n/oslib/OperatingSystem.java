@@ -14,6 +14,7 @@ public enum OperatingSystem {
 	FREEBSD("freebsd"),
 	OPENBSD("openbsd"),
 	NETBSD("netbsd"),
+	DRAGONFLYBSD("dragonfly"),
 	ANDROID("android"),
 	UNKNOWN("unknown");
 
@@ -215,7 +216,7 @@ public enum OperatingSystem {
 	}
 	
 	public static boolean isBSD(OperatingSystem os) {
-		return os == FREEBSD || os == OPENBSD || os == NETBSD;
+		return os == FREEBSD || os == OPENBSD || os == NETBSD || os == DRAGONFLYBSD;
 	}
 	
 	public static boolean isUnix() {

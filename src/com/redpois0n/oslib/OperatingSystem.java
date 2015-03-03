@@ -217,5 +217,13 @@ public enum OperatingSystem {
 	public static boolean isBSD(OperatingSystem os) {
 		return os == FREEBSD || os == OPENBSD || os == NETBSD;
 	}
+	
+	public static boolean isUnix() {
+		return isUnix(getOperatingSystem());
+	}
+	
+	public static boolean isUnix(OperatingSystem os) {
+		return isBSD() || os == OSX || os == LINUX;
+	}
 
 }

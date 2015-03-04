@@ -1,8 +1,6 @@
 # oslib
 Small library to easily detect running Operating System or Linux dist and architecture
 
-Will soon support OS X and Windows version detection, and more distros.
-
 ## Examples
 
 ### Detecting if running Elementary OS (Linux)

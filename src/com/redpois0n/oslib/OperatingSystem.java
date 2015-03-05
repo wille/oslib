@@ -14,7 +14,7 @@ public enum OperatingSystem {
 	FREEBSD("freebsd"),
 	OPENBSD("openbsd"),
 	NETBSD("netbsd"),
-	DRAGONFLYBSD("dragonflybsd"),
+	DRAGONFLYBSD("dragonflybsd", "dragonfly"),
 	ANDROID("android"),
 	UNKNOWN("unknown");
 

@@ -136,7 +136,9 @@ public enum OperatingSystem {
 						}
 						if (lsb && s.startsWith("DISTRIB_ID=")) {
 							shortName = s.substring(11, s.length()).replace("\"", "");
-							if (!shortName.toLowerCase().contains("linux")) {
+							if (shortName.equals("LinuxMint")) {
+								shortName = "Linux Mint";
+							} else if (!shortName.toLowerCase().contains("linux")) {
 								shortName += " Linux";
 							}
 							reader.close();

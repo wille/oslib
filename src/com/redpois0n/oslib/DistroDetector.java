@@ -33,13 +33,13 @@ public class DistroDetector {
 			try {
 				osreleaseMap = Utils.mapFile(new File("/etc/os-release"), "=");
 			} catch (Exception e) {
-				e.printStackTrace();
+				System.out.println("Failed to load /etc/os-release");
 			}
 			
 			try {
 				lsbreleaseMap = Utils.mapFile(new File("/etc/lsb-release"), "=");
-			} catch (Exception ex ) {
-				ex.printStackTrace();
+			} catch (Exception ex) {
+				System.out.println("Failed to load /etc/lsb-release");
 			}
 
 			for (Distro d : Distro.values()) {		
@@ -47,6 +47,7 @@ public class DistroDetector {
 					if (o instanceof SearchType) {
 						SearchType st = (SearchType) o;
 						
+						System.out.println("Checking " + st.getClass().getSimpleName() + "; " + st.detect());
 						if (st.detect()) {
 							distro = d;
 							break;
@@ -54,7 +55,11 @@ public class DistroDetector {
 					}
 				}
 				
-				if (distro == null && lsbReleaseExists) {
+				if (distro != null) {
+					break;
+				}
+				
+				if (lsbReleaseExists) {
 					
 					for (String s : lsbRelease) {
 						String[] split = s.split(":");
@@ -71,7 +76,7 @@ public class DistroDetector {
 					}				
 				}
 				
-				if (lsbreleaseMap == null && detect == null) {		
+				if (lsbreleaseMap == null && osreleaseMap != null && detect == null) {		
 					String distribid = osreleaseMap.get("DISTRIB_ID");
 					
 					if (distribid != null) {

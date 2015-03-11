@@ -9,7 +9,7 @@ public enum Distro {
 	ALPINE("Alpine Linux", "alpine"),
 	ARCH_LINUX("Arch Linux", "archlinux"),
 	CHAKRA("Chakra"),
-	CENTOS("CentOS"),
+	CENTOS("CentOS", new FileExistsType("/etc/centos-release")),
 	DEBIAN("Debian"),
 	CRUNCHBANG("Crunchbang", new FileExistsType("/etc/crunchbang-lsb-release"), new FileExistsType("/etc/lsb-release-crunchbang")),
 	RASPBIAN("Raspbian", new FileContainsType("/etc/os-release", "Raspbian")),

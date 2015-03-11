@@ -7,6 +7,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 import com.redpois0n.oslib.distro.Distro;
+import com.redpois0n.oslib.distro.DistroDetector;
 
 
 public class Icons {
@@ -45,11 +46,11 @@ public class Icons {
 				icon = "os_win";
 			}
 		} else if (os == OperatingSystem.LINUX) {
-			Distro d = Distro.getDistro(longs);
+			Distro d = DistroDetector.getDistro().getDistro();
 			if (d == null || d != null && d == Distro.UNKNOWN) {
 				icon = "os_linux";
 			} else {
-				icon = "dist_" + d.getSearchTypes().replace(" ", "");
+				icon = "dist_" + d.getName().toLowerCase().replace(" ", "");
 			}
 		} else if (os == null){
 			icon = "os_unknown";

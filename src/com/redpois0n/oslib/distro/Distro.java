@@ -58,4 +58,12 @@ public enum Distro {
 		this.name = name;
 	}
 
+	public String getDisplayString() {
+		if (!name.toLowerCase().contains("linux")) {
+			return name + " Linux";
+		}
+		
+		return name;
+	}
+
 }

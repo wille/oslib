@@ -29,7 +29,6 @@ public enum Distro {
 	MANJARO("Manjaro", "ManjaroLinux"),
 	MINT("Mint", "LinuxMint"),
 	LMDE("Mint Debian", "codename:debian"),
-	LXLE("LXLE"),
 	OPENSUSE("openSUSE", "SUSE LINUX", "openSUSE project"),
 	PARABOLA("Parabola", "Parabola GNU/Linux-libre"),
 	PEPPERMINT("Peppermint"),

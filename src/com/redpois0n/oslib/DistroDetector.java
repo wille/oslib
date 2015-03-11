@@ -41,8 +41,14 @@ public class DistroDetector {
 			} catch (Exception ex) {
 				System.out.println("Failed to load /etc/lsb-release");
 			}
+			
+			boolean b = false;
 
-			for (Distro d : Distro.values()) {		
+			for (Distro d : Distro.values()) {
+				if (b) {
+					break;
+				}
+				
 				for (Object o : d.getSearchTypes()) {
 					if (o instanceof SearchType) {
 						SearchType st = (SearchType) o;
@@ -55,12 +61,7 @@ public class DistroDetector {
 					}
 				}
 				
-				if (distro != null) {
-					break;
-				}
-				
-				if (lsbReleaseExists) {
-					
+				if (distro == null && lsbReleaseExists) {			
 					for (String s : lsbRelease) {
 						String[] split = s.split(":");
 						String key = split[0].trim();
@@ -70,13 +71,18 @@ public class DistroDetector {
 							detect = value;
 						} else if (key.equals("Release")) {
 							release = value;
+							System.out.println(value.toLowerCase());
+							if (value.toLowerCase().contains("kali")) {
+								distro = Distro.KALI;
+								break;
+							}
 						} else if (key.equals("Codename")) {
 							codename = value;
 						}
 					}				
 				}
 				
-				if (lsbreleaseMap == null && osreleaseMap != null && detect == null) {		
+				if (distro == null && lsbreleaseMap == null && osreleaseMap != null && detect == null) {		
 					String distribid = osreleaseMap.get("DISTRIB_ID");
 					
 					if (distribid != null) {
@@ -108,7 +114,7 @@ public class DistroDetector {
 					}
 				}
 				
-				if (lsbreleaseMap != null) {
+				if (distro == null && lsbreleaseMap != null) {
 					String distribid = osreleaseMap.get("DISTRIB_ID");
 					
 					if (distribid != null) {
@@ -134,20 +140,22 @@ public class DistroDetector {
 					}
 				}
 				
-				for (Object o : d.getSearchTypes()) {
-					if (o instanceof String) {
-						String s = (String) o;
-						
-						if (s.equalsIgnoreCase(detect)) {
-							distro = d;
-							break;
+				if (distro == null) {
+					for (Object o : d.getSearchTypes()) {
+						if (o instanceof String) {
+							String s = (String) o;
+							
+							if (s.equalsIgnoreCase(detect)) {
+								distro = d;
+								break;
+							}
 						}
 					}
-				}
+				}		
 			}
 			
 			if (distro != null) {
-				DistroSpec spec = new DistroSpec(search(detect));
+				DistroSpec spec = new DistroSpec(distro);
 				spec.setRelease(release);
 				spec.setCodename(codename);
 				

@@ -18,7 +18,20 @@ public class DistroDetector {
 	
 			List<String> checkLSBrelease = Utils.readProcess(new String[] { "type", "-p", "lsb_release" });
 			List<String> lsbRelease = Utils.readProcess(new String[] { "lsb_release", "-irc" });
-			Map<String, String> osreleaseMap = Utils.mapFile(new File("/etc/os-release"), "=");
+			
+			Map<String, String> osreleaseMap = null;
+			Map<String, String> lsbreleaseMap = null;
+			try {
+				osreleaseMap = Utils.mapFile(new File("/etc/os-release"), "=");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			try {
+				lsbreleaseMap = Utils.mapFile(new File("/etc/lsb-release"), "=");
+			} catch (Exception ex ) {
+				ex.printStackTrace();
+			}
 
 			for (Distro d : Distro.values()) {		
 				for (Object o : d.getSearchTypes()) {
@@ -68,6 +81,32 @@ public class DistroDetector {
 						release = version.replace("\"", "");
 					}
 					
+					String distribrelease = osreleaseMap.get("DISTRIB_RELEASE");
+					
+					if (distribrelease != null) {
+						release = distribrelease.replace("\"", "");
+					}
+					
+					String distribcodename = osreleaseMap.get("DISTRIB_CODENAME");
+					
+					if (distribcodename != null) {
+						codename = distribcodename.replace("\"", "");
+					}
+				}
+				
+				if (lsbreleaseMap != null) {
+					String distribid = osreleaseMap.get("DISTRIB_ID");
+					
+					if (distribid != null) {
+						if (distribid.toLowerCase().contains("mint") && distribid.toLowerCase().contains("debian")) {
+							detect = "LMDE";
+						} else if (distribid.toLowerCase().contains("mint")) {
+							detect = "Linux Mint";
+						} else {
+							detect = distribid.replace("\"", "");;
+						}
+					}
+
 					String distribrelease = osreleaseMap.get("DISTRIB_RELEASE");
 					
 					if (distribrelease != null) {

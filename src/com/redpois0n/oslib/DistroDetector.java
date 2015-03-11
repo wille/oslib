@@ -16,9 +16,17 @@ public class DistroDetector {
 			String release = null;
 			String codename = null;
 	
-			List<String> checkLSBrelease = Utils.readProcess(new String[] { "type", "-p", "lsb_release" });
-			List<String> lsbRelease = Utils.readProcess(new String[] { "lsb_release", "-irc" });
+			boolean lsbReleaseExists = false;
 			
+			List<String> lsbRelease = null;
+			
+			try {
+				lsbRelease = Utils.readProcess(new String[] { "lsb_release", "-irc" });
+				lsbReleaseExists = true;
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+						
 			Map<String, String> osreleaseMap = null;
 			Map<String, String> lsbreleaseMap = null;
 			
@@ -46,7 +54,7 @@ public class DistroDetector {
 					}
 				}
 				
-				if (distro == null && checkLSBrelease.size() > 0) {
+				if (distro == null && lsbReleaseExists) {
 					
 					for (String s : lsbRelease) {
 						String[] split = s.split(":");

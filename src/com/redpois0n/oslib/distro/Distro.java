@@ -1,6 +1,5 @@
 package com.redpois0n.oslib.distro;
 
-
 public enum Distro {
 	
 	ALPINE("Alpine Linux", "alpine"),
@@ -17,7 +16,7 @@ public enum Distro {
 	FRUGALWARE("Frugalware"),
 	FUNTOO("Funtoo", new CommandContainsType(new String[] { "lsb_release", "-sd" }, "funtoo")),
 	GENTOO("Gentoo"),
-	JIYUU("Jiyuu", "Jiyuu Linux"),
+	JIYUU("Jiyuu Linux", "Jiyuu"),
 	DEEPIN("Deepin", "LinuxDeepin"),
 	KALI("Kali Linux", "Kali", "Debian Kali Linux"),
 	KORORA("Korora"),

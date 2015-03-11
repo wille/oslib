@@ -170,27 +170,4 @@ public class DistroDetector {
 		
 		return null;
 	}
-	
-	public static Distro search(String name) {
-		for (Distro d : Distro.values()) {
-			for (Object o : d.getSearchTypes()) {
-				if (o instanceof String) {
-					String s = (String) o;
-					
-					if (s.equalsIgnoreCase(name)) {
-						return d;
-					}
-				} else if (o instanceof SearchType) {
-					SearchType st = (SearchType) o;
-					
-					if (st.detect()) {
-						return d;
-					}
-				}
-			}
-		}
-		
-		return Distro.UNKNOWN;
-	}
-
 }

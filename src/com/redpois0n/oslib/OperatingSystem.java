@@ -1,36 +1,35 @@
 package com.redpois0n.oslib;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStreamReader;
+
+import com.redpois0n.oslib.distro.DistroDetector;
 
 public enum OperatingSystem {
 
-	WINDOWS("win"),
-	OSX("mac"),
-	LINUX("linux"),
-	SOLARIS("solaris", "sunos"),
-	FREEBSD("freebsd"),
-	OPENBSD("openbsd"),
-	NETBSD("netbsd"),
-	DRAGONFLYBSD("dragonflybsd", "dragonfly"),
-	ANDROID("android"),
-	UNKNOWN("unknown");
-
-	private static String shortName;
-	private static String longName;
+	WINDOWS("Windows", "win"),
+	OSX("Mac OS X", "mac"),
+	LINUX("Linux", "linux"),
+	SOLARIS("Solaris", "solaris", "sunos"),
+	FREEBSD("FreeBSD", "freebsd"),
+	OPENBSD("OpenBSD", "openbsd"),
+	NETBSD("NetBSD", "netbsd"),
+	DRAGONFLYBSD("DragonFlyBSD", "dragonfly"),
+	ANDROID("Android", "android"),
+	UNKNOWN("unknown", "unknown");
 	
+	private static String shortDisplay;
+	
+	private String name;
 	private String[] search;
 	
-	static {
-		if (getOperatingSystem() != WINDOWS) {
-			longName = getUname();
-		}
+	private OperatingSystem(String name, String... search) {
+		this.name = name;
+		this.search = search;
 	}
 	
-	private OperatingSystem(String... search) {
-		this.search = search;
+	public String getName() {
+		return this.name;
 	}
 	
 	public String[] getSearch() {
@@ -83,97 +82,19 @@ public enum OperatingSystem {
 	 * @return Few examples are "Windows 8.1", "Ubuntu Linux" and "Mac OS X 10.10"
 	 */
 	public static String getShortOperatingSystem() {
-		if (shortName == null) {
+		if (shortDisplay == null) {
 			if (OperatingSystem.getOperatingSystem() == OperatingSystem.LINUX) {
-				try {
-					String uname = getUname();
-					
-					/**
-					 * Returns distros that doesn't modify /etc/*-release
-					 */
-					if (uname != null) {
-						if (uname.toLowerCase().contains("raspbian")) {
-							shortName = "Raspbian Linux";
-						} else if (uname.toLowerCase().contains("crunchbang")) {
-							shortName = "Crunchbang Linux";
-						} else if (uname.toLowerCase().contains("lxle")) {
-							shortName = "LXLE Linux";
-						}
-						
-						if (shortName != null) {
-							return shortName;
-						}
-					}
-					
-					boolean lsb = true;
-					
-					File file = new File("/etc/lsb-release");
-					 
-					if (!file.exists()) {
-						file = new File("/etc/os-release");
-						lsb = false;
-					}
-					
-					if (!file.exists()) {
-						File[] files = new File("/etc/").listFiles();
-						
-						if (files != null) {
-							for (File possible : files) {
-								if (possible.getName().toLowerCase().endsWith("-release")) {
-									file = possible;
-									break;
-								}
-							}
-						}
-						lsb = false;
-					}
-					BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
-					String firstLine = null;
-					String s;
-					while ((s = reader.readLine()) != null) {
-						if (firstLine == null) {
-							firstLine = s;
-						}
-						if (lsb && s.startsWith("DISTRIB_ID=")) {
-							shortName = s.substring(11, s.length()).replace("\"", "");
-							if (shortName.equals("LinuxMint")) {
-								shortName = "Linux Mint";
-							} else if (!shortName.toLowerCase().contains("linux")) {
-								shortName += " Linux";
-							}
-							reader.close();
-							break;
-						} else if (s.startsWith("NAME=")) {
-							shortName = s.substring(5, s.length()).replace("\"", "");
-							if (!shortName.toLowerCase().contains("linux")) {
-								shortName += " Linux";
-							}
-							reader.close();
-							break;
-						}
-					}
-					reader.close();
-					
-					if (shortName == null) {
-						shortName = firstLine;
-						if (!shortName.toLowerCase().contains("linux")) {
-							shortName += " Linux";
-						}
-					}
-				} catch (Exception ex) {
-					ex.printStackTrace();
-					shortName = System.getProperty("os.name");
-				}
+				shortDisplay = DistroDetector.getDistro().getDistro().getDisplayString();
 			} else if (OperatingSystem.getOperatingSystem() == OperatingSystem.OSX) {
-				shortName = System.getProperty("os.name") + " " + OSXVersion.getFromString(System.getProperty("os.version")).getDisplay();
+				shortDisplay = System.getProperty("os.name") + " " + OSXVersion.getFromString(System.getProperty("os.version")).getDisplay();
 			} else if (OperatingSystem.getOperatingSystem() == OperatingSystem.SOLARIS) {
-				shortName = "Solaris"; // I prefer Solaris over SunOS
+				shortDisplay = "Solaris"; // I prefer Solaris over SunOS
 			} else {
-				shortName = System.getProperty("os.name");
+				shortDisplay = System.getProperty("os.name");
 			}
 		}
 
-		return shortName;
+		return shortDisplay;
 	}
 
 	/**
@@ -181,10 +102,10 @@ public enum OperatingSystem {
 	 * @return Will return "uname -a" on Linux, on other systems os.name + os.version + os.arch
 	 */
 	public static String getLongOperatingSystem() {
+		String longName;
+		
 		if (OperatingSystem.getOperatingSystem() == OperatingSystem.LINUX) {
-			if (longName == null) {
-				longName = System.getProperty("os.name") + " " + System.getProperty("os.version") + " " + Arch.getArchString();
-			}
+			longName = getUname();
 		} else if (OperatingSystem.getOperatingSystem() == OperatingSystem.OSX) {
 			longName = System.getProperty("os.name") + " " + System.getProperty("os.version") + " " + OSXVersion.getFromString().getSearch() + " " + Arch.getStringFromArch();
 		} else {

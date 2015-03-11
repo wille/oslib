@@ -47,7 +47,7 @@ public class Icons {
 			if (d == null || d != null && d == Distro.UNKNOWN) {
 				icon = "os_linux";
 			} else {
-				icon = "dist_" + d.getIdentifier().replace(" ", "");
+				icon = "dist_" + d.getSearchTypes().replace(" ", "");
 			}
 		} else if (os == null){
 			icon = "os_unknown";

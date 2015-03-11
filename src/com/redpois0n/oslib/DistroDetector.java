@@ -21,6 +21,7 @@ public class DistroDetector {
 			
 			Map<String, String> osreleaseMap = null;
 			Map<String, String> lsbreleaseMap = null;
+			
 			try {
 				osreleaseMap = Utils.mapFile(new File("/etc/os-release"), "=");
 			} catch (Exception e) {
@@ -62,7 +63,7 @@ public class DistroDetector {
 					}				
 				}
 				
-				if (detect == null) {		
+				if (lsbreleaseMap == null && detect == null) {		
 					String distribid = osreleaseMap.get("DISTRIB_ID");
 					
 					if (distribid != null) {
@@ -103,7 +104,7 @@ public class DistroDetector {
 						} else if (distribid.toLowerCase().contains("mint")) {
 							detect = "Linux Mint";
 						} else {
-							detect = distribid.replace("\"", "");;
+							detect = distribid.replace("\"", "");
 						}
 					}
 

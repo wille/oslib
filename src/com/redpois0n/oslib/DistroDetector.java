@@ -71,7 +71,6 @@ public class DistroDetector {
 							detect = value;
 						} else if (key.equals("Release")) {
 							release = value;
-							System.out.println(value.toLowerCase());
 							if (value.toLowerCase().contains("kali")) {
 								distro = Distro.KALI;
 								break;
@@ -141,6 +140,11 @@ public class DistroDetector {
 				}
 				
 				if (distro == null) {
+					if (d.getName().equalsIgnoreCase(detect)) {
+						distro = d;
+						break;
+					}
+					
 					for (Object o : d.getSearchTypes()) {
 						if (o instanceof String) {
 							String s = (String) o;

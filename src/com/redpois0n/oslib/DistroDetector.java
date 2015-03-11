@@ -26,7 +26,7 @@ public class DistroDetector {
 					} else if (key.equals("Release")) {
 						release = value;
 					} else if (key.equals("Codename")) {
-						codename= value;
+						codename = value;
 					}
 				}
 			}

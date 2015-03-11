@@ -44,8 +44,6 @@ public enum Distro {
 	UNKNOWN("");
 	
 	private String name;
-	private String release;
-	private String codename;
 	private Object[] searchTypes;
 	
 	private Distro(String name, Object... s) {
@@ -64,20 +62,5 @@ public enum Distro {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	public String getCodename() {
-		return this.codename;
-	}
-	
-	public void setCodename(String codename) {
-		this.codename = codename;
-	}
-	
-	public String getRelease() {
-		return this.release;
-	}
-	
-	public void setRelease(String release) {
-		this.release = release;
-	}
+
 }

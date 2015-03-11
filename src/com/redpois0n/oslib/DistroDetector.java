@@ -1,21 +1,38 @@
 package com.redpois0n.oslib;
 
+import java.io.File;
 import java.util.List;
+import java.util.Map;
+
+import com.redpois0n.oslib.distro.DistroSpec;
+import com.redpois0n.oslib.distro.SearchType;
 
 public class DistroDetector {
 	
 	public static DistroSpec getDistro() {
-		Distro distro = Distro.UNKNOWN;
+		Distro distro = null;
 		try {
-			for (Distro d : Distro.values()) {
-				String detect = null;
-				String release = null;
-				String codename = null;
+			String detect = null;
+			String release = null;
+			String codename = null;
+	
+			List<String> checkLSBrelease = Utils.readProcess(new String[] { "type", "-p", "lsb_release" });
+			List<String> lsbRelease = Utils.readProcess(new String[] { "lsb_release", "-irc" });
+			Map<String, String> osreleaseMap = Utils.mapFile(new File("/etc/os-release"), "=");
+
+			for (Distro d : Distro.values()) {		
+				for (Object o : d.getSearchTypes()) {
+					if (o instanceof SearchType) {
+						SearchType st = (SearchType) o;
+						
+						if (st.detect()) {
+							distro = d;
+							break;
+						}
+					}
+				}
 				
-				List<String> checkLSBrelease = Utils.readProcess(new String[] { "type", "-p", "lsb_release" });
-				
-				if (checkLSBrelease.size() > 0) {
-					List<String> lsbRelease = Utils.readProcess(new String[] { "lsb_release", "-irc" });
+				if (distro == null && checkLSBrelease.size() > 0) {
 					
 					for (String s : lsbRelease) {
 						String[] split = s.split(":");
@@ -29,21 +46,87 @@ public class DistroDetector {
 						} else if (key.equals("Codename")) {
 							codename = value;
 						}
+					}				
+				}
+				
+				if (detect == null) {		
+					String distribid = osreleaseMap.get("DISTRIB_ID");
+					
+					if (distribid != null) {
+						detect = distribid.replace("\"", "");;
 					}
 					
-					if (detect != null) {
-						distro = d;
-						distro
-						break;
+					String name = osreleaseMap.get("NAME");
+					
+					if (distribid == null && name != null) {
+						detect = name.replace("\"", "");;
+					}
+					
+					String version = osreleaseMap.get("VERSION_ID");
+					
+					if (version != null) {
+						release = version.replace("\"", "");
+					}
+					
+					String distribrelease = osreleaseMap.get("DISTRIB_RELEASE");
+					
+					if (distribrelease != null) {
+						release = distribrelease.replace("\"", "");
+					}
+					
+					String distribcodename = osreleaseMap.get("DISTRIB_CODENAME");
+					
+					if (distribcodename != null) {
+						codename = distribcodename.replace("\"", "");
+					}
+				}
+				
+				for (Object o : d.getSearchTypes()) {
+					if (o instanceof String) {
+						String s = (String) o;
+						
+						if (s.equalsIgnoreCase(detect)) {
+							distro = d;
+							break;
+						}
 					}
 				}
 			}
 			
+			if (distro != null) {
+				DistroSpec spec = new DistroSpec(search(detect));
+				spec.setRelease(release);
+				spec.setCodename(codename);
+				
+				return spec;
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 		
-		return distro;
+		return null;
+	}
+	
+	public static Distro search(String name) {
+		for (Distro d : Distro.values()) {
+			for (Object o : d.getSearchTypes()) {
+				if (o instanceof String) {
+					String s = (String) o;
+					
+					if (s.equalsIgnoreCase(name)) {
+						return d;
+					}
+				} else if (o instanceof SearchType) {
+					SearchType st = (SearchType) o;
+					
+					if (st.detect()) {
+						return d;
+					}
+				}
+			}
+		}
+		
+		return Distro.UNKNOWN;
 	}
 
 }

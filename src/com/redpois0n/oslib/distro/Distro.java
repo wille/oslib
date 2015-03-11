@@ -1,8 +1,5 @@
-package com.redpois0n.oslib;
+package com.redpois0n.oslib.distro;
 
-import com.redpois0n.oslib.distro.CommandContainsType;
-import com.redpois0n.oslib.distro.FileContainsType;
-import com.redpois0n.oslib.distro.FileExistsType;
 
 public enum Distro {
 	

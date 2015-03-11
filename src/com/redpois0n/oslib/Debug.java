@@ -1,5 +1,6 @@
 package com.redpois0n.oslib;
 
+import com.redpois0n.oslib.distro.DistroDetector;
 import com.redpois0n.oslib.distro.DistroSpec;
 
 public class Debug {

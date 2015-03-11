@@ -1,11 +1,10 @@
-package com.redpois0n.oslib;
+package com.redpois0n.oslib.distro;
 
 import java.io.File;
 import java.util.List;
 import java.util.Map;
 
-import com.redpois0n.oslib.distro.DistroSpec;
-import com.redpois0n.oslib.distro.SearchType;
+import com.redpois0n.oslib.Utils;
 
 public class DistroDetector {
 	

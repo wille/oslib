@@ -46,19 +46,7 @@ public class DistroDetector {
 			for (Distro d : Distro.values()) {
 				if (b) {
 					break;
-				}
-				
-				for (Object o : d.getSearchTypes()) {
-					if (o instanceof SearchType) {
-						SearchType st = (SearchType) o;
-						
-						System.out.println("Checking " + st.getClass().getSimpleName() + "; " + st.detect());
-						if (st.detect()) {
-							distro = d;
-							break;
-						}
-					}
-				}
+				}				
 				
 				if (distro == null && lsbReleaseExists) {			
 					for (String s : lsbRelease) {
@@ -154,7 +142,18 @@ public class DistroDetector {
 							}
 						}
 					}
-				}		
+					
+					for (Object o : d.getSearchTypes()) {
+						if (o instanceof SearchType) {
+							SearchType st = (SearchType) o;
+
+							if (st.detect() && distro == null) {
+								distro = d;
+								break;
+							}
+						}
+					}
+				}					
 			}
 			
 			if (distro != null) {

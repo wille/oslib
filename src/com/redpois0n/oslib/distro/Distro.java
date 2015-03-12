@@ -68,5 +68,25 @@ public enum Distro {
 		
 		return name;
 	}
+	
+	public static Distro getDistroFromString(String s) {
+		for (Distro d : values()) {
+			if (d.getName().equalsIgnoreCase(s)) {
+				return d;
+			}
+			
+			for (Object o : d.getSearchTypes()) {
+				if (o instanceof String) {
+					String s1 = (String) o;
+					
+					if (s1.equalsIgnoreCase(s)) {
+						return d;
+					}
+				}
+			}
+		}
+		
+		return Distro.UNKNOWN;
+	}
 
 }

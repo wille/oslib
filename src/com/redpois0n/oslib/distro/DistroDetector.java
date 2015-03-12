@@ -8,7 +8,7 @@ import com.redpois0n.oslib.Utils;
 
 public class DistroDetector {
 	
-	public static DistroSpec getDistro() {
+	public static DistroSpec detect() {
 		Distro distro = null;
 		try {
 			String detect = null;
@@ -165,6 +165,6 @@ public class DistroDetector {
 			ex.printStackTrace();
 		}
 		
-		return null;
+		return new DistroSpec(Distro.UNKNOWN);
 	}
 }

@@ -64,6 +64,10 @@ public class DistroDetector {
 							}
 						} else if (key.equals("Codename")) {
 							codename = value;
+							if (value.toLowerCase().contains("debian") && detect != null && detect.toLowerCase().contains("mint")) {
+								distro = Distro.LMDE;
+								break;
+							}
 						}
 					}				
 				}
@@ -104,13 +108,7 @@ public class DistroDetector {
 					String distribid = osreleaseMap.get("DISTRIB_ID");
 					
 					if (distribid != null) {
-						if (distribid.toLowerCase().contains("mint") && distribid.toLowerCase().contains("debian")) {
-							detect = "LMDE";
-						} else if (distribid.toLowerCase().contains("mint")) {
-							detect = "Linux Mint";
-						} else {
-							detect = distribid.replace("\"", "");
-						}
+						detect = distribid.replace("\"", "");
 					}
 
 					String distribrelease = osreleaseMap.get("DISTRIB_RELEASE");

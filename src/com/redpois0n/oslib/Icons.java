@@ -6,8 +6,8 @@ import java.net.MalformedURLException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
-import com.redpois0n.oslib.distro.Distro;
-import com.redpois0n.oslib.distro.DistroDetector;
+import com.redpois0n.oslib.linux.Distro;
+import com.redpois0n.oslib.linux.DistroDetector;
 
 
 public class Icons {

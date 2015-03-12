@@ -3,7 +3,7 @@ package com.redpois0n.oslib;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-import com.redpois0n.oslib.distro.DistroDetector;
+import com.redpois0n.oslib.linux.DistroDetector;
 
 public enum OperatingSystem {
 
@@ -86,7 +86,7 @@ public enum OperatingSystem {
 			if (OperatingSystem.getOperatingSystem() == OperatingSystem.LINUX) {
 				shortDisplay = DistroDetector.detect().getDistro().getDisplayString();
 			} else if (OperatingSystem.getOperatingSystem() == OperatingSystem.OSX) {
-				shortDisplay = System.getProperty("os.name") + " " + OSXVersion.getFromString(System.getProperty("os.version")).getDisplay();
+				shortDisplay = System.getProperty("os.name") + " " + OSXVersion.getFromString().getDisplay();
 			} else if (OperatingSystem.getOperatingSystem() == OperatingSystem.SOLARIS) {
 				shortDisplay = "Solaris"; // I prefer Solaris over SunOS
 			} else {

@@ -1,4 +1,4 @@
-package com.redpois0n.oslib.distro;
+package com.redpois0n.oslib.linux;
 
 import java.io.BufferedReader;
 import java.io.File;

@@ -1,4 +1,4 @@
-package com.redpois0n.oslib.distro;
+package com.redpois0n.oslib.linux;
 
 import java.util.List;
 

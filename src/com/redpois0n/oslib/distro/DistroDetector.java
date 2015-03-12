@@ -4,11 +4,17 @@ import java.io.File;
 import java.util.List;
 import java.util.Map;
 
+import com.redpois0n.oslib.OperatingSystem;
+import com.redpois0n.oslib.UnsupportedOperatingSystemException;
 import com.redpois0n.oslib.Utils;
 
 public class DistroDetector {
 	
 	public static DistroSpec detect() {
+		if (OperatingSystem.getOperatingSystem() != OperatingSystem.LINUX) {
+			throw new UnsupportedOperatingSystemException("Cannot detect distributions on other systems than Linux");
+		}
+		
 		Distro distro = null;
 		try {
 			String detect = null;

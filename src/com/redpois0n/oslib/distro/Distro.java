@@ -1,5 +1,8 @@
 package com.redpois0n.oslib.distro;
 
+import com.redpois0n.oslib.OperatingSystem;
+import com.redpois0n.oslib.UnsupportedOperatingSystemException;
+
 public enum Distro {
 	
 	ALPINE("Alpine Linux", "alpine", new FileExistsType("/etc/arch-release")),
@@ -87,6 +90,22 @@ public enum Distro {
 		}
 		
 		return Distro.UNKNOWN;
+	}
+	
+	public static Distro getLocalDistro() throws UnsupportedOperatingSystemException {
+		if (OperatingSystem.getOperatingSystem() != OperatingSystem.LINUX) {
+			throw new UnsupportedOperatingSystemException("Cannot detect distributions on other systems than Linux");
+		}
+		
+		return DistroDetector.detect().getDistro();
+	}
+	
+	public static DistroSpec getLocalDistroSpec() throws UnsupportedOperatingSystemException {
+		if (OperatingSystem.getOperatingSystem() != OperatingSystem.LINUX) {
+			throw new UnsupportedOperatingSystemException("Cannot detect distributions on other systems than Linux");
+		}
+		
+		return DistroDetector.detect();
 	}
 
 }

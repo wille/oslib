@@ -84,7 +84,7 @@ public enum OperatingSystem {
 	public static String getShortOperatingSystem() {
 		if (shortDisplay == null) {
 			if (OperatingSystem.getOperatingSystem() == OperatingSystem.LINUX) {
-				shortDisplay = DistroDetector.getDistro().getDistro().getDisplayString();
+				shortDisplay = DistroDetector.detect().getDistro().getDisplayString();
 			} else if (OperatingSystem.getOperatingSystem() == OperatingSystem.OSX) {
 				shortDisplay = System.getProperty("os.name") + " " + OSXVersion.getFromString(System.getProperty("os.version")).getDisplay();
 			} else if (OperatingSystem.getOperatingSystem() == OperatingSystem.SOLARIS) {

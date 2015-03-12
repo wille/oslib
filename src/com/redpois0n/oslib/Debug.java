@@ -6,7 +6,7 @@ import com.redpois0n.oslib.distro.DistroSpec;
 public class Debug {
 	
 	public static void main(String[] args) {
-		DistroSpec ds = DistroDetector.getDistro();
+		DistroSpec ds = DistroDetector.detect();
 		
 		System.out.println(ds.getDistro().name());
 		System.out.println(ds.getDistro().getName());

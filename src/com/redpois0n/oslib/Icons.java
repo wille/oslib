@@ -46,7 +46,7 @@ public class Icons {
 				icon = "os_win";
 			}
 		} else if (os == OperatingSystem.LINUX) {
-			Distro d = DistroDetector.getDistro().getDistro();
+			Distro d = DistroDetector.detect().getDistro();
 			if (d == null || d != null && d == Distro.UNKNOWN) {
 				icon = "os_linux";
 			} else {

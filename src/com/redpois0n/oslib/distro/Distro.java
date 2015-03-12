@@ -64,7 +64,9 @@ public enum Distro {
 	}
 
 	public String getDisplayString() {
-		if (!name.toLowerCase().contains("linux")) {
+		if (this == UNKNOWN) {
+			return "Unknown Linux";
+		} else if (!name.toLowerCase().contains("linux")) {
 			return name + " Linux";
 		}
 		

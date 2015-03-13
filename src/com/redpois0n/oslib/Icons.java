@@ -6,19 +6,23 @@ import java.net.MalformedURLException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+import com.redpois0n.oslib.bsd.BSDOperatingSystem;
+import com.redpois0n.oslib.bsd.Flavor;
 import com.redpois0n.oslib.linux.Distro;
-import com.redpois0n.oslib.linux.DistroDetector;
+import com.redpois0n.oslib.linux.LinuxOperatingSystem;
+import com.redpois0n.oslib.windows.WindowsOperatingSystem;
+import com.redpois0n.oslib.windows.WindowsVersion;
 
 
 public class Icons {
 	
 	public static Icon getIcon() {
-		return getIcon(OperatingSystem.getOperatingSystem(), OperatingSystem.getLongOperatingSystem());
+		return getIcon(OperatingSystem.getOperatingSystem());
 	}
 	
 	@SuppressWarnings("deprecation")
-	public static Icon getIcon(OperatingSystem os, String longs) {
-		String icon = getIconString(os, longs);
+	public static Icon getIcon(AbstractOperatingSystem os) {
+		String icon = getIconString(os);
 		
 		try {
 			return new ImageIcon(new File("icons/" + icon + ".png").toURL());
@@ -29,54 +33,46 @@ public class Icons {
 	}
 	
 	public static String getIconString() {
-		return getIconString(OperatingSystem.getOperatingSystem(), OperatingSystem.getLongOperatingSystem());
+		return getIconString(OperatingSystem.getOperatingSystem());
 	}
 	
-	public static String getIconString(OperatingSystem os, String longs) {
+	public static String getIconString(AbstractOperatingSystem os) {
 		String icon;
 		
-		if (os == OperatingSystem.WINDOWS) {
-			if (longs.startsWith("Windows 8")) {
+		if (os == null) {
+			icon = "os_unknown";
+		} else if (os.getType() == OperatingSystem.WINDOWS) {
+			WindowsOperatingSystem wos = (WindowsOperatingSystem) os;
+			if (wos.getVersion() == WindowsVersion.WIN8 || wos.getVersion() == WindowsVersion.WIN81) {
 				icon = "os_win8";
-			} else if (longs.startsWith("Windows XP")) {
+			} else if (wos.getVersion() == WindowsVersion.WINXP) {
 				icon = "os_winxp";
-			} else if (longs.startsWith("Windows 200")) {
+			} else if (wos.getVersion().getSearch().startsWith("Windows 200")) {
 				icon = "os_win2000";
 			} else {
 				icon = "os_win";
 			}
-		} else if (os == OperatingSystem.LINUX) {
-			Distro d = DistroDetector.detect().getDistro();
+		} else if (os.getType() == OperatingSystem.LINUX) {
+			LinuxOperatingSystem los = (LinuxOperatingSystem) os;
+			Distro d = los.getDistro();
 			if (d == null || d != null && d == Distro.UNKNOWN) {
 				icon = "os_linux";
 			} else {
 				icon = "dist_" + d.getName().toLowerCase().replace(" ", "");
 			}
-		} else if (os == null){
-			icon = "os_unknown";
+		} else if (os.getType() == OperatingSystem.BSD) {
+			BSDOperatingSystem bos = (BSDOperatingSystem) os;
+			
+			if (bos.getFlavor() == Flavor.UNKNOWN) {
+				icon = "os_unknown";
+			} else {
+				icon = "os_" + bos.getFlavor().getName().toLowerCase().replace(" ", "");
+			}
 		} else {
-			icon = "os_" + os.getPrimarySearch();
+			icon = "os_" + os.getType().getName().toLowerCase().replace(" ", "");
 		}
 		
 		return icon;
-	}
-	
-	public static String getIconFromStringOnly(String longs) {
-		OperatingSystem os = null;
-		
-		for (OperatingSystem o : OperatingSystem.values()) {
-			if (os != null) {
-				break;
-			}
-			for (String s : o.getSearch()) {
-				if (longs.toLowerCase().contains(s)) {
-					os = o;
-					break;
-				}
-			}
-		}
-		
-		return getIconString(os, longs);
 	}
 
 }

@@ -35,7 +35,7 @@ public class OSXOperatingSystem extends AbstractOperatingSystem {
 
 	@Override
 	public String getDetailedString() {
-		return "Mac OS X " + version.getSearch() + " " + version.getVersion();
+		return "Mac OS X " + version.getDisplay() + " " + version.getVersion();
 	}
 
 }

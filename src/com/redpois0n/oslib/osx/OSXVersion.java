@@ -22,6 +22,10 @@ public enum OSXVersion {
 		this.version = version;
 	}
 	
+	/**
+	 * Returns codename, such as Yosemite
+	 * @return
+	 */
 	public String getDisplay() {
 		return search;
 	}
@@ -32,14 +36,6 @@ public enum OSXVersion {
 	 */
 	public String getVersion() {
 		return version;
-	}
-
-	/**
-	 * Version display name, such as Yosemite
-	 * @return
-	 */
-	public String getSearch() {
-		return search.toLowerCase();
 	}
 	
 	/**
@@ -57,7 +53,7 @@ public enum OSXVersion {
 	 */
 	public static OSXVersion getFromString(String search) {
 		for (OSXVersion v : OSXVersion.values()) {
-			if (v.getVersion().equalsIgnoreCase(search) || v.getSearch().toLowerCase().contains(search.toLowerCase())) {
+			if (v.getVersion().equalsIgnoreCase(search) || v.getDisplay().toLowerCase().contains(search.toLowerCase())) {
 				return v;
 			}
 		}

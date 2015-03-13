@@ -3,13 +3,19 @@ package com.redpois0n.oslib;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+import com.redpois0n.oslib.bsd.BSDOperatingSystem;
+import com.redpois0n.oslib.bsd.Flavor;
 import com.redpois0n.oslib.bsd.FlavorDetector;
 import com.redpois0n.oslib.linux.DistroDetector;
 import com.redpois0n.oslib.linux.LinuxDetector;
+import com.redpois0n.oslib.linux.LinuxOperatingSystem;
 import com.redpois0n.oslib.osx.OSXDetector;
+import com.redpois0n.oslib.osx.OSXOperatingSystem;
 import com.redpois0n.oslib.osx.OSXVersion;
 import com.redpois0n.oslib.solaris.SolarisDetector;
+import com.redpois0n.oslib.solaris.SolarisOperatingSystem;
 import com.redpois0n.oslib.windows.WindowsDetector;
+import com.redpois0n.oslib.windows.WindowsOperatingSystem;
 
 public enum OperatingSystem {
 
@@ -68,7 +74,7 @@ public enum OperatingSystem {
 		return os;
 	}
 	
-	public static OperatingSystem getOperatingSystem() {
+	public static AbstractOperatingSystem getOperatingSystem() {
 		return getOperatingSystem(true);
 	}
 
@@ -76,28 +82,32 @@ public enum OperatingSystem {
 	 * Gets this machines operating system
 	 * @return
 	 */
-	public static OperatingSystem getOperatingSystem(boolean b) {
-		if (FlavorDetector.detect(b) != null) {
-			return BSD;
+	public static AbstractOperatingSystem getOperatingSystem(boolean b) {
+		Flavor flavor = FlavorDetector.detect(b);
+		
+		if (flavor != null) {
+			return new BSDOperatingSystem(flavor);
 		}
 		
-		if (LinuxDetector.detect(b)) {
-			return LINUX;
+		boolean linux = LinuxDetector.detect(b);
+		
+		if (linux) {
+			return new LinuxOperatingSystem(DistroDetector.detect());
 		}
 		
 		if (OSXDetector.detect(b)) {
-			return OSX;
+			return new OSXOperatingSystem();
 		}
 		
 		if (WindowsDetector.detect(b)) {
-			return WINDOWS;
+			return new WindowsOperatingSystem();
 		}
 		
 		if (SolarisDetector.detect(b)) {
-			return SOLARIS;
+			return new SolarisOperatingSystem();
 		}
 		
-		return UNKNOWN;
+		return null;
 	}
 	
 	/**

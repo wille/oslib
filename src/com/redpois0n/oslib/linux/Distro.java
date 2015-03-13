@@ -84,7 +84,7 @@ public enum Distro {
 				if (o instanceof String) {
 					String s1 = (String) o;
 					
-					if (s1.equalsIgnoreCase(s)) {
+					if (s1.contains(s)) {
 						return d;
 					}
 				}

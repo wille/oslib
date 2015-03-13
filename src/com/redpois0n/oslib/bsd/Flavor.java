@@ -47,6 +47,6 @@ public enum Flavor {
 	}
 	
 	public static Flavor getLocalFlavor() throws UnsupportedOperatingSystemException {
-		return FlavorDetector.detect();
+		return FlavorDetector.detect(true);
 	}
 }

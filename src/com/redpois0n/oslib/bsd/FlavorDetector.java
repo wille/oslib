@@ -8,7 +8,7 @@ import com.redpois0n.oslib.Utils;
 
 public class FlavorDetector {
 	
-	public static Flavor detect() throws UnsupportedOperatingSystemException {
+	public static Flavor detect(boolean fallback) throws UnsupportedOperatingSystemException {
 		Flavor flavor = null;
 		
 		List<String> file = null;
@@ -29,12 +29,14 @@ public class FlavorDetector {
 			}
 		}
 		
-		String prop = System.getProperty("os.name");
-		
-		flavor = Flavor.getFlavorFromString(prop);
-		
-		if (flavor != Flavor.UNKNOWN) {
-			return flavor;
+		if (fallback) {
+			String prop = System.getProperty("os.name");
+			
+			flavor = Flavor.getFlavorFromString(prop);
+			
+			if (flavor != Flavor.UNKNOWN) {
+				return flavor;
+			}
 		}
 		
 		return Flavor.UNKNOWN;

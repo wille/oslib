@@ -1,4 +1,4 @@
-package com.redpois0n.oslib;
+package com.redpois0n.oslib.osx;
 
 public enum OSXVersion {
 	

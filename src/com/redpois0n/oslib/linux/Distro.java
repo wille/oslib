@@ -34,6 +34,7 @@ public enum Distro {
 	PEPPERMINT("Peppermint"),
 	REDHAT_ENTERPRISE("Redhat Enterprise", "RedHatEnterprise", new FileContainsType("/etc/redhat-release", "Red Hat")),
 	SABAYON("Sabayon", new FileExistsType("/etc/sabayon-edition")),
+	SCIENTIFICLINUX("Scientific Linux", new FileContainsType("/etc/system-release", "Scientific Linux")),
 	SLACKWARE("Slackware", new FileExistsType("/etc/slackware-version")),
 	SOLUSOS("SolusOS", new FileContainsType("/etc/issue", "SolusOS")),
 	STEAMOS("SteamOS", "steam"),

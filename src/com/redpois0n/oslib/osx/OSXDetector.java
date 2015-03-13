@@ -24,7 +24,7 @@ public class OSXDetector {
 		}
 		
 		if (fallback) {
-			return System.getProperty("os.name").contains(OperatingSystem.OSX.getPrimarySearch());
+			return System.getProperty("os.name").toLowerCase().contains(OperatingSystem.OSX.getPrimarySearch());
 		}
 		
 		return false;

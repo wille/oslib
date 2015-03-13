@@ -11,7 +11,6 @@ import com.redpois0n.oslib.linux.LinuxDetector;
 import com.redpois0n.oslib.linux.LinuxOperatingSystem;
 import com.redpois0n.oslib.osx.OSXDetector;
 import com.redpois0n.oslib.osx.OSXOperatingSystem;
-import com.redpois0n.oslib.osx.OSXVersion;
 import com.redpois0n.oslib.solaris.SolarisDetector;
 import com.redpois0n.oslib.solaris.SolarisOperatingSystem;
 import com.redpois0n.oslib.windows.WindowsDetector;
@@ -25,9 +24,7 @@ public enum OperatingSystem {
 	SOLARIS("Solaris", "solaris", "sunos"),
 	BSD("BSD"),
 	UNKNOWN("unknown", "unknown");
-	
-	private static String shortDisplay;
-	
+		
 	private String name;
 	private String[] search;
 	
@@ -110,44 +107,6 @@ public enum OperatingSystem {
 		return null;
 	}
 	
-	/**
-	 * Gets basic operating system string
-	 * @return Few examples are "Windows 8.1", "Ubuntu Linux" and "Mac OS X 10.10"
-	 */
-	public static String getShortOperatingSystem() {
-		if (shortDisplay == null) {
-			if (OperatingSystem.getOperatingSystem() == OperatingSystem.LINUX) {
-				shortDisplay = DistroDetector.detect().getDistro().getDisplayString();
-			} else if (OperatingSystem.getOperatingSystem() == OperatingSystem.OSX) {
-				shortDisplay = System.getProperty("os.name") + " " + OSXVersion.getFromString().getDisplay();
-			} else if (OperatingSystem.getOperatingSystem() == OperatingSystem.SOLARIS) {
-				shortDisplay = "Solaris"; // I prefer Solaris over SunOS
-			} else {
-				shortDisplay = System.getProperty("os.name");
-			}
-		}
-
-		return shortDisplay;
-	}
-
-	/**
-	 * Gets long operating system string
-	 * @return Will return "uname -a" on Linux, on other systems os.name + os.version + os.arch
-	 */
-	public static String getLongOperatingSystem() {
-		String longName;
-		
-		if (OperatingSystem.getOperatingSystem() == OperatingSystem.LINUX) {
-			longName = getUname();
-		} else if (OperatingSystem.getOperatingSystem() == OperatingSystem.OSX) {
-			longName = System.getProperty("os.name") + " " + System.getProperty("os.version") + " " + OSXVersion.getFromString().getSearch() + " " + Arch.getStringFromArch();
-		} else {
-			longName = System.getProperty("os.name") + " " + System.getProperty("os.version") + " " + Arch.getArchString();
-		}
-		
-		return longName;
-	}
-
 	/**
 	 * Runs the command "uname -a" and reads the first line
 	 * @return

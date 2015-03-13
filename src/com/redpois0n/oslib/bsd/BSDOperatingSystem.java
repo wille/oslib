@@ -20,4 +20,14 @@ public class BSDOperatingSystem extends AbstractOperatingSystem {
 		return this.flavor;
 	}
 
+	@Override
+	public String getDisplayString() {
+		return flavor.getName();
+	}
+
+	@Override
+	public String getDetailedString() {
+		return null;
+	}
+
 }

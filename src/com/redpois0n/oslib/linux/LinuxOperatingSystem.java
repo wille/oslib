@@ -24,4 +24,22 @@ public class LinuxOperatingSystem extends AbstractOperatingSystem {
 		return this.ds;
 	}
 
+	@Override
+	public String getDisplayString() {
+		Distro d = ds.getDistro();
+				
+		String name = d.getDisplayString();
+		
+		if (ds.getRelease() != null) {
+			name += " " + ds.getRelease();
+		}
+		
+		return name;
+	}
+
+	@Override
+	public String getDetailedString() {
+		return null;
+	}
+
 }

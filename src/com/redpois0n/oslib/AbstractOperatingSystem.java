@@ -11,4 +11,16 @@ public abstract class AbstractOperatingSystem {
 	public OperatingSystem getType() {
 		return this.type;
 	}
+	
+	/**
+	 * Returns display string
+	 * @return
+	 */
+	public abstract String getDisplayString();
+	
+	/**
+	 * Returns detailed string
+	 * @return
+	 */
+	public abstract String getDetailedString();
 }

@@ -168,7 +168,7 @@ public enum OperatingSystem {
 	}
 	
 	public static boolean isUnix() {
-		return isUnix(getOperatingSystem());
+		return isUnix(getOperatingSystem().getType());
 	}
 	
 	public static boolean isUnix(OperatingSystem os) {

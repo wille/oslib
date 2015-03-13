@@ -20,4 +20,14 @@ public class WindowsOperatingSystem extends AbstractOperatingSystem {
 		return this.version;
 	}
 
+	@Override
+	public String getDisplayString() {
+		return version.getSearch();
+	}
+
+	@Override
+	public String getDetailedString() {
+		return version.getSearch();
+	}
+
 }

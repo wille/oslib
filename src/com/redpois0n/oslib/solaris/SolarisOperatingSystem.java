@@ -9,4 +9,14 @@ public class SolarisOperatingSystem extends AbstractOperatingSystem {
 		super(OperatingSystem.SOLARIS);
 	}
 
+	@Override
+	public String getDisplayString() {
+		return "Solaris";
+	}
+
+	@Override
+	public String getDetailedString() {
+		return null;
+	}
+
 }

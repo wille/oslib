@@ -2,6 +2,7 @@ package com.redpois0n.oslib.windows;
 
 public enum WindowsVersion {
 	
+	UNKNOWN("Unknown Windows"),
 	WIN2000("Windows 2000"),
 	WINXP("Windows XP"),
 	WINSERVER2003("Windows 2003"), // Note that Windows Server 2003 identifies itself only as Windows 2003
@@ -38,12 +39,12 @@ public enum WindowsVersion {
 	 */
 	public static WindowsVersion getFromString(String search) {
 		for (WindowsVersion v : WindowsVersion.values()) {
-			if (v.getSearch().toLowerCase().contains(search.toLowerCase())) {
+			if (v != UNKNOWN && v.getSearch().toLowerCase().contains(search.toLowerCase())) {
 				return v;
 			}
 		}
 		
-		return null;
+		return UNKNOWN;
 	}
 
 

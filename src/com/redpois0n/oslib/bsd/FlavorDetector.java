@@ -1,6 +1,10 @@
 package com.redpois0n.oslib.bsd;
 
+import java.io.File;
+import java.util.List;
+
 import com.redpois0n.oslib.UnsupportedOperatingSystemException;
+import com.redpois0n.oslib.Utils;
 
 public class FlavorDetector {
 	
@@ -8,7 +12,7 @@ public class FlavorDetector {
 		Flavor flavor = null;
 		
 		try {
-			
+			List<String> file = Utils.readFile(new File("/var/run/dmesg.boot");
 			if (flavor != null) {
 				return flavor;
 			}

@@ -31,19 +31,31 @@ public class Utils {
 	public static Map<String, String> mapFile(File file, String delimiter) throws Exception {
 		Map<String, String> map = new HashMap<String, String>();
 
-		BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
-		String line;
+		List<String> lines = readFile(file);
 		
-		while ((line = reader.readLine()) != null) {
+		for (String line : lines) {
 			String[] split = line.split(delimiter);
 			String key = split[0].trim();
 			String value = split[1].trim();
 			map.put(key, value);
 		}
 		
-		reader.close();
-
 		return map;
+	}
+
+	public static List<String> readFile(File file) throws Exception {
+		BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+		
+		List<String> list = new ArrayList<String>();
+		String line;
+		
+		while ((line = reader.readLine()) != null) {
+			list.add(line);
+		}
+		
+		reader.close();
+		
+		return list;
 	}
 
 }

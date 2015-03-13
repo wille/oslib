@@ -27,14 +27,14 @@ public class FlavorDetector {
 					return flavor;
 				}
 			}
-		} else {
-			String prop = System.getProperty("os.name");
-			
-			flavor = Flavor.getFlavorFromString(prop);
-			
-			if (flavor != Flavor.UNKNOWN) {
-				return flavor;
-			}
+		}
+		
+		String prop = System.getProperty("os.name");
+		
+		flavor = Flavor.getFlavorFromString(prop);
+		
+		if (flavor != Flavor.UNKNOWN) {
+			return flavor;
 		}
 		
 		return Flavor.UNKNOWN;

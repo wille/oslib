@@ -62,7 +62,10 @@ public class Utils {
 	 * Runs the command "uname -a" and reads the first line
 	 * @return
 	 */
-	public static String getUname() {
+	public static String getUname() throws UnsupportedOperatingSystemException {
+		if (OperatingSystem.getOperatingSystem().getType() != OperatingSystem.WINDOWS) {
+			throw new UnsupportedOperatingSystemException("Not supported on Windows");
+		}
 		String uname = null;
 		
 		try {

@@ -10,7 +10,7 @@ public enum Distro {
 	CHAKRA("Chakra", new FileExistsType("/etc/chakra-release")),
 	CENTOS("CentOS", new FileExistsType("/etc/centos-release"), new FileContainsType("/etc/redhat-release", "CentOS")),
 	CRUNCHBANG("Crunchbang", new FileExistsType("/etc/crunchbang-lsb-release"), new FileExistsType("/etc/lsb-release-crunchbang")),
-	DEBIAN("Debian", new FileExistsType("/etc/debian_version")),
+	DEBIAN("Debian"),
 	RASPBIAN("Raspbian", new FileContainsType("/etc/os-release", "Raspbian")),
 	ELEMENTARY_OS("elementary OS", "elementary"),
 	EVOLVE_OS("Evolve OS", "EvolveOS", new FileExistsType("/etc/evolveos-release")),

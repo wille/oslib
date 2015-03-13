@@ -21,21 +21,23 @@ public class FileContainsType extends SearchType {
 
 	@Override
 	public boolean detect() {		
-		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
-			
-			String line;
-			
-			while ((line = reader.readLine()) != null) {
-				if (line.toLowerCase().contains(needle.toLowerCase())) {
-					reader.close();
-					return true;
+		if (file.exists()) {
+			try {
+				BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+				
+				String line;
+				
+				while ((line = reader.readLine()) != null) {
+					if (line.toLowerCase().contains(needle.toLowerCase())) {
+						reader.close();
+						return true;
+					}
 				}
+				
+				reader.close();
+			} catch (Exception ex) {
+				ex.printStackTrace();
 			}
-			
-			reader.close();
-		} catch (Exception ex) {
-			ex.printStackTrace();
 		}
 		
 		return false;

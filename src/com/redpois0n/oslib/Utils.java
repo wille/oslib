@@ -44,16 +44,19 @@ public class Utils {
 	}
 
 	public static List<String> readFile(File file) throws Exception {
-		BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
-		
 		List<String> list = new ArrayList<String>();
-		String line;
-		
-		while ((line = reader.readLine()) != null) {
-			list.add(line);
+
+		if (file.exists()) {
+			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+
+			String line;
+			
+			while ((line = reader.readLine()) != null) {
+				list.add(line);
+			}
+			
+			reader.close();
 		}
-		
-		reader.close();
 		
 		return list;
 	}

@@ -1,8 +1,5 @@
 package com.redpois0n.oslib;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 import com.redpois0n.oslib.bsd.BSDOperatingSystem;
 import com.redpois0n.oslib.bsd.Flavor;
 import com.redpois0n.oslib.bsd.FlavorDetector;
@@ -105,25 +102,6 @@ public enum OperatingSystem {
 		}
 		
 		return null;
-	}
-	
-	/**
-	 * Runs the command "uname -a" and reads the first line
-	 * @return
-	 */
-	public static String getUname() {
-		String uname = null;
-		
-		try {
-			Process p = Runtime.getRuntime().exec(new String[] { "uname", "-a"});
-			BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
-			uname = reader.readLine();
-			reader.close();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-		
-		return uname;
 	}
 	
 	public static boolean isUnix() {

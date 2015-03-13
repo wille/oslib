@@ -3,12 +3,11 @@ package com.redpois0n.oslib.bsd;
 import java.io.File;
 import java.util.List;
 
-import com.redpois0n.oslib.UnsupportedOperatingSystemException;
 import com.redpois0n.oslib.Utils;
 
 public class FlavorDetector {
 	
-	public static Flavor detect(boolean fallback) throws UnsupportedOperatingSystemException {
+	public static Flavor detect(boolean fallback) {
 		Flavor flavor = null;
 		
 		List<String> file = null;

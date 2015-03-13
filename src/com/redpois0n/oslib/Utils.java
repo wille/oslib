@@ -58,4 +58,23 @@ public class Utils {
 		return list;
 	}
 
+	/**
+	 * Runs the command "uname -a" and reads the first line
+	 * @return
+	 */
+	public static String getUname() {
+		String uname = null;
+		
+		try {
+			Process p = Runtime.getRuntime().exec(new String[] { "uname", "-a"});
+			BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			uname = reader.readLine();
+			reader.close();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		return uname;
+	}
+
 }

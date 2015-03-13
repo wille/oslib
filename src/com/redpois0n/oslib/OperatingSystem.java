@@ -11,11 +11,7 @@ public enum OperatingSystem {
 	OSX("Mac OS X", "mac"),
 	LINUX("Linux", "linux"),
 	SOLARIS("Solaris", "solaris", "sunos"),
-	FREEBSD("FreeBSD", "freebsd"),
-	OPENBSD("OpenBSD", "openbsd"),
-	NETBSD("NetBSD", "netbsd"),
-	DRAGONFLYBSD("DragonFlyBSD", "dragonfly"),
-	ANDROID("Android", "android"),
+	BSD("BSD"),
 	UNKNOWN("unknown", "unknown");
 	
 	private static String shortDisplay;
@@ -71,9 +67,6 @@ public enum OperatingSystem {
 	 * @return
 	 */
 	public static OperatingSystem getOperatingSystem() {
-		if (System.getProperty("java.vm.name").equalsIgnoreCase("Dalvik")) {
-			return ANDROID;
-		}
 		return getOperatingSystem(System.getProperty("os.name"));
 	}
 	
@@ -134,20 +127,12 @@ public enum OperatingSystem {
 		return uname;
 	}
 	
-	public static boolean isBSD() {
-		return isBSD(getOperatingSystem());
-	}
-	
-	public static boolean isBSD(OperatingSystem os) {
-		return os == FREEBSD || os == OPENBSD || os == NETBSD || os == DRAGONFLYBSD;
-	}
-	
 	public static boolean isUnix() {
 		return isUnix(getOperatingSystem());
 	}
 	
 	public static boolean isUnix(OperatingSystem os) {
-		return isBSD() || os == OSX || os == LINUX;
+		return os == BSD || os == OSX || os == LINUX;
 	}
 
 }

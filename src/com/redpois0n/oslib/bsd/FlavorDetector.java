@@ -23,7 +23,7 @@ public class FlavorDetector {
 			for (String line : file) {
 				flavor = Flavor.getFlavorFromString(line);
 				
-				if (flavor != Flavor.UNKNOWN) {
+				if (flavor != null) {
 					return flavor;
 				}
 			}
@@ -34,12 +34,12 @@ public class FlavorDetector {
 			
 			flavor = Flavor.getFlavorFromString(prop);
 			
-			if (flavor != Flavor.UNKNOWN) {
+			if (flavor != null) {
 				return flavor;
 			}
 		}
 		
-		return Flavor.UNKNOWN;
+		return null;
 	}
 
 }

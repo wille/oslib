@@ -8,7 +8,7 @@ public enum Flavor {
 	OPENBSD("OpenBSD"),
 	NETBSD("NetBSD"),
 	DRAGONFLYBSD("DragonFlyBSD", "dragonfly"),
-	UNKNOWN("Unknown BSD");
+	UNKNOWN("Unknown BSD", "BSD");
 	
 	private String name;
 	private String[] search;
@@ -43,7 +43,7 @@ public enum Flavor {
 			}
 		}
 				
-		return Flavor.UNKNOWN;
+		return null;
 	}
 	
 	public static Flavor getLocalFlavor() throws UnsupportedOperatingSystemException {

@@ -32,7 +32,7 @@ public class Debug {
 			
 			System.out.println("Distro: " + d.getDistro().getDisplayString());
 			System.out.println("Codename: " + d.getCodename());
-			System.out.println("Release: " + d.getCodename());
+			System.out.println("Release: " + d.getRelease());
 		} else if (os.getType() == OperatingSystem.BSD) {
 			BSDOperatingSystem bos = (BSDOperatingSystem) os;
 			

@@ -15,7 +15,7 @@ public class OSXDetector {
 			List<String> lines = Utils.readFile(file);
 			
 			for (String line : lines) {
-				if (line.contains("Mac OS X")) {
+				if (line.contains(OperatingSystem.OSX.getName())) {
 					return true;
 				}
 			}

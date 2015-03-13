@@ -1,17 +1,49 @@
 package com.redpois0n.oslib;
 
-import com.redpois0n.oslib.linux.DistroDetector;
+import com.redpois0n.oslib.bsd.BSDOperatingSystem;
 import com.redpois0n.oslib.linux.DistroSpec;
+import com.redpois0n.oslib.linux.LinuxOperatingSystem;
+import com.redpois0n.oslib.osx.OSXOperatingSystem;
+import com.redpois0n.oslib.solaris.SolarisOperatingSystem;
+import com.redpois0n.oslib.windows.WindowsOperatingSystem;
 
 public class Debug {
 	
 	public static void main(String[] args) {
-		DistroSpec ds = DistroDetector.detect();
+		AbstractOperatingSystem os = OperatingSystem.getOperatingSystem();
 		
-		System.out.println(ds.getDistro().name());
-		System.out.println(ds.getDistro().getName());
-		System.out.println(ds.getCodename());
-		System.out.println(ds.getRelease());
+		String display = os.getDisplayString();
+		String detailed = os.getDetailedString();
+		
+		System.out.println("Type: " + os.getType().name());
+		
+		if (os.getType() == OperatingSystem.WINDOWS) {
+			WindowsOperatingSystem wos = (WindowsOperatingSystem) os;
+			
+			System.out.println("Windows Version: " + wos.getVersion().getSearch());
+		} else if (os.getType() == OperatingSystem.OSX) {
+			OSXOperatingSystem xos = (OSXOperatingSystem) os;
+			
+			System.out.println("OSX Version: " + xos.getVersion().getDisplay() + ", " + xos.getVersion().getVersion());
+		} else if (os.getType() == OperatingSystem.LINUX) {
+			LinuxOperatingSystem los = (LinuxOperatingSystem) os;
+			
+			DistroSpec d = los.getDistroSpec();
+			
+			System.out.println("Distro: " + d.getDistro().getDisplayString());
+			System.out.println("Codename: " + d.getCodename());
+			System.out.println("Release: " + d.getCodename());
+		} else if (os.getType() == OperatingSystem.BSD) {
+			BSDOperatingSystem bos = (BSDOperatingSystem) os;
+			
+			System.out.println("Flavor: " + bos.getFlavor().getName());
+		} else if (os.getType() == OperatingSystem.SOLARIS) {
+			SolarisOperatingSystem sos = (SolarisOperatingSystem) os;
+			
+		}
+
+		System.out.println("Display: " + display);
+		System.out.println("Detailed: " + detailed);
 	}
 
 }

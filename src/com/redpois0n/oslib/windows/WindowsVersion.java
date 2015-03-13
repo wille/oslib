@@ -2,16 +2,16 @@ package com.redpois0n.oslib.windows;
 
 public enum WindowsVersion {
 	
-	WIN2000("windows 2000"),
-	WINXP("windows xp"),
-	WINSERVER2003("windows 2003"), // Note that Windows Server 2003 identifies itself only as Windows 2003
-	WINVISTA("windows vista"),
-	WINSERVER2008("windows server 2008"),
-	WIN7("windows 7"),
-	WIN8("windows 8"),
-	WIN81("windows 8.1"),
-	WINSERVER2012("windows server 2012"),
-	WIN10("windows 10"); // NOT BEING DETECTED BY THE JVM! os.name returns 8.1!
+	WIN2000("Windows 2000"),
+	WINXP("Windows XP"),
+	WINSERVER2003("Windows 2003"), // Note that Windows Server 2003 identifies itself only as Windows 2003
+	WINVISTA("Windows Vista"),
+	WINSERVER2008("Windows Server 2008"),
+	WIN7("Windows 7"),
+	WIN8("Windows 8"),
+	WIN81("Windows 8.1"),
+	WINSERVER2012("Windows Server 2012"),
+	WIN10("Windows 10"); // NOT BEING DETECTED BY THE JVM! os.name returns 8.1!
 	
 	private String search;
 	

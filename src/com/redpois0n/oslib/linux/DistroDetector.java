@@ -11,7 +11,7 @@ import com.redpois0n.oslib.Utils;
 public class DistroDetector {
 	
 	public static DistroSpec detect() {
-		if (OperatingSystem.getOperatingSystem() != OperatingSystem.LINUX) {
+		if (OperatingSystem.getOperatingSystem().getType() != OperatingSystem.LINUX) {
 			throw new UnsupportedOperatingSystemException("Cannot detect distributions on other systems than Linux");
 		}
 		

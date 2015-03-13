@@ -3,7 +3,14 @@ package com.redpois0n.oslib;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+import com.redpois0n.oslib.bsd.Flavor;
+import com.redpois0n.oslib.bsd.FlavorDetector;
 import com.redpois0n.oslib.linux.DistroDetector;
+import com.redpois0n.oslib.linux.LinuxDetector;
+import com.redpois0n.oslib.osx.OSXDetector;
+import com.redpois0n.oslib.osx.OSXVersion;
+import com.redpois0n.oslib.solaris.SolarisDetector;
+import com.redpois0n.oslib.windows.WindowsDetector;
 
 public enum OperatingSystem {
 
@@ -67,7 +74,27 @@ public enum OperatingSystem {
 	 * @return
 	 */
 	public static OperatingSystem getOperatingSystem() {
-		return getOperatingSystem(System.getProperty("os.name"));
+		if (FlavorDetector.detect(true) != null) {
+			return BSD;
+		}
+		
+		if (LinuxDetector.detect(true)) {
+			return LINUX;
+		}
+		
+		if (OSXDetector.detect(true)) {
+			return OSX;
+		}
+		
+		if (WindowsDetector.detect(true)) {
+			return WINDOWS;
+		}
+		
+		if (SolarisDetector.detect(true)) {
+			return SOLARIS;
+		}
+		
+		return UNKNOWN;
 	}
 	
 	/**

@@ -21,7 +21,7 @@ public class DistroDetector {
 			
 			try {
 				lsbRelease = Utils.readProcess(new String[] { "lsb_release", "-irc" });
-				lsbReleaseExists = true;
+				lsbReleaseExists = lsbRelease.size() == 3;
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}
@@ -71,11 +71,10 @@ public class DistroDetector {
 						}
 					}				
 				}
-				
-				if (distro == null && lsbreleaseMap == null && osreleaseMap != null && detect == null) {		
+				if (distro == null && lsbRelease == null && osreleaseMap != null) {		
 					String distribid = osreleaseMap.get("DISTRIB_ID");
-					
-					if (distribid != null) {
+										
+					if (detect == null && distribid != null) {
 						detect = distribid.replace("\"", "");;
 					}
 					
@@ -127,16 +126,17 @@ public class DistroDetector {
 				if (distro == null) {
 					if (d.getName().equalsIgnoreCase(detect)) {
 						distro = d;
-						break;
 					}
 					
-					for (Object o : d.getSearchTypes()) {
-						if (o instanceof String) {
-							String s = (String) o;
+					if (detect != null) {
+						for (Object o : d.getSearchTypes()) {
+							if (o instanceof String) {
+								String s = (String) o;
 
-							if (s.toLowerCase().contains(detect.toLowerCase())) {
-								distro = d;
-								break;
+								if (s.toLowerCase().contains(detect.toLowerCase())) {
+									distro = d;
+									break;
+								}
 							}
 						}
 					}
@@ -151,16 +151,18 @@ public class DistroDetector {
 							}
 						}
 					}
-				}					
+				}		
+
+				if (distro != null) {
+					DistroSpec spec = new DistroSpec(distro);
+					spec.setRelease(release);
+					spec.setCodename(codename);
+					
+					return spec;
+				}
 			}
 			
-			if (distro != null) {
-				DistroSpec spec = new DistroSpec(distro);
-				spec.setRelease(release);
-				spec.setCodename(codename);
-				
-				return spec;
-			}
+			
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

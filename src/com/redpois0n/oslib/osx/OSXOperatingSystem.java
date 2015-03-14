@@ -19,11 +19,7 @@ public class OSXOperatingSystem extends AbstractOperatingSystem {
 	public void setVersion(OSXVersion version) {
 		this.version = version;
 	}
-	
-	/**
-	 * Returns the current OSXVersion, if null, it will get one for this operating systems
-	 * @return
-	 */
+
 	public OSXVersion getVersion() {
 		return this.version;
 	}

@@ -39,7 +39,7 @@ public class Icons {
 	public static String getIconString(AbstractOperatingSystem os) {
 		String icon;
 		
-		if (os == null) {
+		if (os == null || os != null && os.getType() == OperatingSystem.UNKNOWN) {
 			icon = "os_unknown";
 		} else if (os.getType() == OperatingSystem.WINDOWS) {
 			WindowsOperatingSystem wos = (WindowsOperatingSystem) os;

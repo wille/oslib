@@ -105,7 +105,7 @@ public enum OperatingSystem {
 		if (SolarisDetector.detect(b)) {
 			os = new SolarisOperatingSystem();
 		}
-		
+
 		if (os == null) {
 			os = new UnknownOperatingSystem();
 		}

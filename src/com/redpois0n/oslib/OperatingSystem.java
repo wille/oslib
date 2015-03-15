@@ -84,7 +84,7 @@ public enum OperatingSystem {
 	public static AbstractOperatingSystem getOperatingSystem(boolean b) {
 		Flavor flavor = FlavorDetector.detect(b);
 		
-		AbstractOperatingSystem os = new UnknownOperatingSystem();
+		AbstractOperatingSystem os = null;
 		
 		if (flavor != null) {
 			os = new BSDOperatingSystem(flavor);
@@ -104,6 +104,10 @@ public enum OperatingSystem {
 		
 		if (SolarisDetector.detect(b)) {
 			os = new SolarisOperatingSystem();
+		}
+		
+		if (os == null) {
+			os = new UnknownOperatingSystem();
 		}
 		
 		if (os instanceof UnixOperatingSystem) {

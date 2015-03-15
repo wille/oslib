@@ -3,13 +3,19 @@ package com.redpois0n.oslib;
 public abstract class AbstractOperatingSystem {
 	
 	protected OperatingSystem type;
+	protected Arch arch;
 
-	public AbstractOperatingSystem(OperatingSystem type) {
+	public AbstractOperatingSystem(OperatingSystem type, Arch arch) {
 		this.type = type;
+		this.arch = arch;
 	}
 	
 	public OperatingSystem getType() {
 		return this.type;
+	}
+	
+	public Arch getArch() {
+		return this.arch;
 	}
 	
 	/**

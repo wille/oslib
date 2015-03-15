@@ -2,10 +2,14 @@ package com.redpois0n.oslib;
 
 public class UnknownOperatingSystem extends AbstractOperatingSystem {
 	
-	public UnknownOperatingSystem() {
-		super(OperatingSystem.UNKNOWN);
+	public UnknownOperatingSystem(Arch arch) {
+		super(OperatingSystem.UNKNOWN, arch);
 	}
 	
+	public UnknownOperatingSystem() {
+		this(Arch.getArch());
+	}
+
 	@Override
 	public String getDisplayString() {
 		return "Unknown";

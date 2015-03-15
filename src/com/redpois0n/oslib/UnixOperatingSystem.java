@@ -1,14 +1,12 @@
 package com.redpois0n.oslib;
 
-import com.redpois0n.oslib.AbstractOperatingSystem;
-import com.redpois0n.oslib.OperatingSystem;
 
 public abstract class UnixOperatingSystem extends AbstractOperatingSystem {
 
 	private String detailed;
 	
-	public UnixOperatingSystem(OperatingSystem os) {
-		super(os);
+	public UnixOperatingSystem(OperatingSystem os, Arch arch) {
+		super(os, arch);
 	}
 
 	@Override

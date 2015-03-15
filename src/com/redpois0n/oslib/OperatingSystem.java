@@ -57,6 +57,11 @@ public enum OperatingSystem {
 				break;
 			}
 			
+			if (o.getName().equalsIgnoreCase(str)) {
+				os = o;
+				break;
+			}
+			
 			for (String s : o.getSearch()) {
 				if (str.contains(s)) {
 					os = o;
@@ -79,29 +84,34 @@ public enum OperatingSystem {
 	public static AbstractOperatingSystem getOperatingSystem(boolean b) {
 		Flavor flavor = FlavorDetector.detect(b);
 		
+		AbstractOperatingSystem os = new UnknownOperatingSystem();
+		
 		if (flavor != null) {
-			return new BSDOperatingSystem(flavor);
+			os = new BSDOperatingSystem(flavor);
 		}
-		
-		boolean linux = LinuxDetector.detect(b);
-		
-		if (linux) {
-			return new LinuxOperatingSystem(DistroDetector.detect());
+				
+		if (LinuxDetector.detect(b)) {
+			os = new LinuxOperatingSystem(DistroDetector.detect());
 		}
 		
 		if (OSXDetector.detect(b)) {
-			return new OSXOperatingSystem();
+			os = new OSXOperatingSystem();
 		}
 		
 		if (WindowsDetector.detect(b)) {
-			return new WindowsOperatingSystem();
+			os = new WindowsOperatingSystem();
 		}
 		
 		if (SolarisDetector.detect(b)) {
-			return new SolarisOperatingSystem();
+			os = new SolarisOperatingSystem();
 		}
 		
-		return null;
+		if (os instanceof UnixOperatingSystem) {
+			UnixOperatingSystem uos = (UnixOperatingSystem) os;
+			uos.setDetailed(Utils.getUname());
+		}
+		
+		return os;
 	}
 	
 	public static boolean isUnix() {

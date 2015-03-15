@@ -1,9 +1,9 @@
 package com.redpois0n.oslib.linux;
 
-import com.redpois0n.oslib.AbstractOperatingSystem;
 import com.redpois0n.oslib.OperatingSystem;
+import com.redpois0n.oslib.UnixOperatingSystem;
 
-public class LinuxOperatingSystem extends AbstractOperatingSystem {
+public class LinuxOperatingSystem extends UnixOperatingSystem {
 
 	private DistroSpec ds;
 	
@@ -35,11 +35,6 @@ public class LinuxOperatingSystem extends AbstractOperatingSystem {
 		}
 		
 		return name;
-	}
-
-	@Override
-	public String getDetailedString() {
-		return null;
 	}
 
 }

@@ -1,9 +1,9 @@
 package com.redpois0n.oslib.bsd;
 
-import com.redpois0n.oslib.AbstractOperatingSystem;
 import com.redpois0n.oslib.OperatingSystem;
+import com.redpois0n.oslib.UnixOperatingSystem;
 
-public class BSDOperatingSystem extends AbstractOperatingSystem {
+public class BSDOperatingSystem extends UnixOperatingSystem {
 
 	private Flavor flavor;
 	
@@ -23,11 +23,6 @@ public class BSDOperatingSystem extends AbstractOperatingSystem {
 	@Override
 	public String getDisplayString() {
 		return flavor.getName();
-	}
-
-	@Override
-	public String getDetailedString() {
-		return null;
 	}
 
 }

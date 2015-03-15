@@ -1,9 +1,9 @@
 package com.redpois0n.oslib.osx;
 
-import com.redpois0n.oslib.AbstractOperatingSystem;
 import com.redpois0n.oslib.OperatingSystem;
+import com.redpois0n.oslib.UnixOperatingSystem;
 
-public class OSXOperatingSystem extends AbstractOperatingSystem {
+public class OSXOperatingSystem extends UnixOperatingSystem {
 
 	private OSXVersion version;
 	

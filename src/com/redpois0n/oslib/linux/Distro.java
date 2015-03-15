@@ -42,7 +42,7 @@ public enum Distro {
 	TRISQUEL("Trisquel"),
 	UBUNTU("Ubuntu"),
 	VIPERR("Viperr"),
-	UNKNOWN("");
+	UNKNOWN("Unknown");
 	
 	private String name;
 	private Object[] searchTypes;
@@ -72,6 +72,16 @@ public enum Distro {
 		}
 		
 		return name;
+	}
+	
+	public static Distro getDistroFromName(String s) {
+		for (Distro d : values()) {
+			if (d.getName().equalsIgnoreCase(s)) {
+				return d;
+			}
+		}
+		
+		return Distro.UNKNOWN;
 	}
 	
 	public static Distro getDistroFromString(String s) {

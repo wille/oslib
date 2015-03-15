@@ -109,7 +109,7 @@ public enum OperatingSystem {
 	}
 	
 	public static boolean isUnix(OperatingSystem os) {
-		return os == BSD || os == OSX || os == LINUX;
+		return os == BSD || os == OSX || os == LINUX || os == SOLARIS;
 	}
 
 }

@@ -60,5 +60,15 @@ public enum OSXVersion {
 		
 		return null;
 	}
+	
+	public static OSXVersion getExact(String display, String version) {
+		for (OSXVersion v : OSXVersion.values()) {
+			if (v.getDisplay().equals(display) && v.getVersion().equals(version)) {
+				return v;
+			}
+		}
+		
+		return null;
+	}
 
 }

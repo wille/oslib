@@ -11,6 +11,10 @@ public class WindowsOperatingSystem extends AbstractOperatingSystem {
 		this(WindowsVersion.getFromString());
 	}
 	
+	public WindowsOperatingSystem(String name) {
+		this(WindowsVersion.getFromString(name));
+	}
+	
 	public WindowsOperatingSystem(WindowsVersion version) {
 		super(OperatingSystem.WINDOWS);
 		this.version = version;

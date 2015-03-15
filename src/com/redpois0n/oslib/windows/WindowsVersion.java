@@ -39,7 +39,7 @@ public enum WindowsVersion {
 	 */
 	public static WindowsVersion getFromString(String search) {
 		for (WindowsVersion v : WindowsVersion.values()) {
-			if (v != UNKNOWN && v.getSearch().toLowerCase().contains(search.toLowerCase())) {
+			if (v != UNKNOWN && v.getSearch().equalsIgnoreCase(search)) {
 				return v;
 			}
 		}

@@ -60,6 +60,7 @@ public class DistroDetector {
 							release = value;
 							if (value.toLowerCase().contains("kali")) {
 								distro = Distro.KALI;
+								release = null;
 								break;
 							}
 						} else if (key.equals("Codename")) {

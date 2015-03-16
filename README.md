@@ -5,7 +5,7 @@ Java library to easily detect running Operating System, Linux dist, architecture
 
 ### Detecting if running Elementary OS (Linux)
 ```java
-OperatingSystem os = OperatingSystem.getOperatingSystem();
+AbstractOperatingSystem os = OperatingSystem.getOperatingSystem();
 
 if (os.getType() == OperatingSystem.LINUX) {
 	LinuxOperatingSystem los = (LinuxOperatingSystem) os;
@@ -20,7 +20,7 @@ if (os.getType() == OperatingSystem.LINUX) {
 
 ### Getting all information available about current OS
 ```java
-OperatingSystem os = OperatingSystem.getOperatingSystem();
+AbstractOperatingSystem os = OperatingSystem.getOperatingSystem();
 
 if (os.getType() == OperatingSystem.OSX) {
   	OSXOperatingSystem xos = (OSXOperatingSystem) os;

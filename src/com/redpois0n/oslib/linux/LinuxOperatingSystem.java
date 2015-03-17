@@ -8,6 +8,10 @@ public class LinuxOperatingSystem extends UnixOperatingSystem {
 
 	private DistroSpec ds;
 	
+	public LinuxOperatingSystem(Distro d) {
+		this(new DistroSpec(d), Arch.getArch());
+	}
+	
 	public LinuxOperatingSystem(DistroSpec ds, Arch arch) {
 		super(OperatingSystem.LINUX, arch);
 		this.ds = ds;

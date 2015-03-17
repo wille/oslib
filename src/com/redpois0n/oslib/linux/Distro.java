@@ -19,7 +19,7 @@ public enum Distro {
 	FRUGALWARE("Frugalware"),
 	FUNTOO("Funtoo", new FileContainsType("/etc/gentoo-release", "funtoo"), new CommandContainsType(new String[] { "lsb_release", "-sd" }, "funtoo")),
 	GENTOO("Gentoo", new FileContainsType("/etc/gentoo-release", "gentoo")),
-	JIYUU("Jiyuu Linux", "Jiyuu"),
+	JIYUU("Jiyuu", "Jiyuu"),
 	DEEPIN("Deepin", "LinuxDeepin", new FileContainsType("/etc/issue/", "LinuxDeepin")),
 	KALI("Kali Linux", "Kali", "Debian Kali Linux"),
 	KORORA("Korora", new FileContainsType("/etc/fedora-release", "korora")),

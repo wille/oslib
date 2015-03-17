@@ -64,7 +64,7 @@ public class Icons {
 			BSDOperatingSystem bos = (BSDOperatingSystem) os;
 			
 			if (bos.getFlavor() == Flavor.UNKNOWN) {
-				icon = "os_unknown";
+				icon = "bsd_unknown";
 			} else {
 				icon = "os_" + bos.getFlavor().getName().toLowerCase().replace(" ", "");
 			}

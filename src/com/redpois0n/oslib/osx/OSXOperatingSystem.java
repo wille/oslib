@@ -31,7 +31,7 @@ public class OSXOperatingSystem extends UnixOperatingSystem {
 
 	@Override
 	public String getDisplayString() {
-		return "Mac OS X " + version.getDisplay();
+		return "Mac OS X " + version.getDisplay() + " " + version.getVersion();
 	}
 
 	@Override

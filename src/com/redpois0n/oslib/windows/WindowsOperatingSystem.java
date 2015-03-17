@@ -25,6 +25,10 @@ public class WindowsOperatingSystem extends AbstractOperatingSystem {
 		this.version = version;
 	}
 	
+	public WindowsOperatingSystem(WindowsVersion version) {
+		this(version, Arch.getArch());
+	}
+	
 	public WindowsVersion getVersion() {
 		return this.version;
 	}

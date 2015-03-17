@@ -7,7 +7,7 @@ public enum Flavor {
 	FREEBS("FreeBSD"),
 	OPENBSD("OpenBSD"),
 	NETBSD("NetBSD"),
-	DRAGONFLYBSD("DragonFlyBSD", "dragonfly"),
+	DRAGONFLYBSD("DragonFlyBSD", "DragonFly"),
 	UNKNOWN("Unknown BSD", "BSD");
 	
 	private String name;
@@ -37,7 +37,7 @@ public enum Flavor {
 			}
 			
 			for (String search : d.getSearch()) {
-				if (search.contains(s)) {
+				if (search.toLowerCase().contains(s.toLowerCase())) {
 					return d;
 				}
 			}

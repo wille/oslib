@@ -45,3 +45,43 @@ if (os.getType() == OperatingSystem.LINUX) {
 	}
 }
 ```
+
+### Current Known Compatibility:
+
+_Note:_ These are the only ones I have tested with. Will work well on untested systems, but the checked ones are absolutely working.
+Linux distro and BSD flavor detection after 1.0 is based on [screenFetch](https://github.com/KittyKatt/screenFetch)
+
+- [x] Mac OS X
+- [x] Windows
+- [ ] Arch Linux
+- [x] Fedora
+- [x] Linux Mint
+- [x] Ubuntu
+- [x] Debian
+- [ ] Crunchbang
+- [ ] Gentoo
+- [ ] Funtoo
+- [x] FreeBSD
+- [ ] OpenBSD
+- [ ] NetBSD
+- [ ] DragonFlyBSD
+- [x] OpenSUSE
+- [ ] Mandriva/Mandrake
+- [ ] Slackware
+- [ ] Red Hat (RHEL)
+- [ ] Frugalware
+- [ ] Peppermint
+- [ ] SolusOS
+- [ ] Mageia
+- [ ] ParabolaGNU/Linux-libre
+- [ ] Viperr
+- [ ] LinuxDeepin
+- [ ] Chakra
+- [ ] Trisquel
+- [ ] Manjaro
+- [x] elementary OS
+- [ ] Scientific Linux
+- [x] Kali Linux
+- [ ] Sabayon
+- [x] Linux (If no distro detected or failed to detect)
+- [x] Solaris

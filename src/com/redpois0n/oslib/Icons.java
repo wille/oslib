@@ -66,7 +66,7 @@ public class Icons {
 			if (bos.getFlavor() == Flavor.UNKNOWN) {
 				icon = "bsd_unknown";
 			} else {
-				icon = "os_" + bos.getFlavor().getName().toLowerCase().replace(" ", "");
+				icon = "bsd_" + bos.getFlavor().getName().toLowerCase().replace(" ", "");
 			}
 		} else {
 			icon = "os_" + os.getType().getName().toLowerCase().replace(" ", "");

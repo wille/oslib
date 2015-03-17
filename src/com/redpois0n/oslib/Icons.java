@@ -43,7 +43,7 @@ public class Icons {
 			icon = "os_unknown";
 		} else if (os.getType() == OperatingSystem.WINDOWS) {
 			WindowsOperatingSystem wos = (WindowsOperatingSystem) os;
-			if (wos.getVersion() == WindowsVersion.WIN8 || wos.getVersion() == WindowsVersion.WIN81) {
+			if (wos.getVersion() == WindowsVersion.WIN8 || wos.getVersion() == WindowsVersion.WIN81 || wos.getVersion() == WindowsVersion.WIN10 || wos.getVersion() == WindowsVersion.WINSERVER2012) {
 				icon = "os_win8";
 			} else if (wos.getVersion() == WindowsVersion.WINXP) {
 				icon = "os_winxp";

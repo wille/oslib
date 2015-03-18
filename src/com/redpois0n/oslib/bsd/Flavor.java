@@ -32,7 +32,7 @@ public enum Flavor {
 	
 	public static Flavor getFlavorFromString(String s) {
 		for (Flavor d : values()) {
-			if (d.getName().equalsIgnoreCase(s)) {
+			if (d.getName().toLowerCase().contains(s.toLowerCase())) {
 				return d;
 			}
 			

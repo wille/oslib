@@ -63,7 +63,7 @@ public class Icons {
 		} else if (os.getType() == OperatingSystem.BSD) {
 			BSDOperatingSystem bos = (BSDOperatingSystem) os;
 			
-			if (bos.getFlavor() == Flavor.UNKNOWN) {
+			if (bos.getFlavor() == Flavor.UNKNOWN || bos.getFlavor() == null) {
 				icon = "bsd_unknown";
 			} else {
 				icon = "bsd_" + bos.getFlavor().getName().toLowerCase().replace(" ", "");
@@ -71,7 +71,7 @@ public class Icons {
 		} else {
 			icon = "os_" + os.getType().getName().toLowerCase().replace(" ", "");
 		}
-		
+				
 		return icon;
 	}
 

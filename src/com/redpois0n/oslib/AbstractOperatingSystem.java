@@ -19,12 +19,20 @@ public abstract class AbstractOperatingSystem {
 		return this.arch;
 	}
 	
+	public void setArch(Arch arch) {
+		this.arch = arch;
+	}
+	
 	public DesktopEnvironment getDesktopEnvironment() {
 		if (de == null) {
 			de = DEDetector.detect();
 		}
 		
 		return de;
+	}
+	
+	public void setDesktopEnvironment(DesktopEnvironment de) {
+		this.de = de;
 	}
 	
 	/**

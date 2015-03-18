@@ -1,10 +1,8 @@
 package com.redpois0n.oslib;
 
-/**
- * http://askubuntu.com/questions/72549/how-to-determine-which-window-manager-is-running/227669
- */
 public enum DesktopEnvironment {
 	
+	GNOME("GNOME"),
 	BUDGIE("Budgie"),
 	KDE("KDE"),
 	KDE4("KDE4"),
@@ -34,5 +32,25 @@ public enum DesktopEnvironment {
 	
 	public void setVersion(String version) {
 		this.version = version;
+	}
+	
+	public String getDisplayString() {
+		String name = search;
+		
+		if (version != null) {
+			name += " " + version;
+		}
+		
+		return name;
+	}
+	
+	public static DesktopEnvironment getFromString(String s) {
+		for (DesktopEnvironment de : DesktopEnvironment.values()) {
+			if (de.getSearch().equalsIgnoreCase(s)) {
+				return de;
+			}
+		}
+		
+		return UNKNOWN;
 	}
 }

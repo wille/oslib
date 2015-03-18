@@ -29,4 +29,8 @@ public abstract class AbstractOperatingSystem {
 	 * @return
 	 */
 	public abstract String getDetailedString();
+	
+	public DesktopEnvironment getDesktopEnvironment() {
+		return DEDetector.detect();
+	}
 }

@@ -4,6 +4,7 @@ public abstract class AbstractOperatingSystem {
 	
 	protected OperatingSystem type;
 	protected Arch arch;
+	protected DesktopEnvironment de;
 
 	public AbstractOperatingSystem(OperatingSystem type, Arch arch) {
 		this.type = type;
@@ -18,6 +19,14 @@ public abstract class AbstractOperatingSystem {
 		return this.arch;
 	}
 	
+	public DesktopEnvironment getDesktopEnvironment() {
+		if (de == null) {
+			de = DEDetector.detect();
+		}
+		
+		return de;
+	}
+	
 	/**
 	 * Returns display string
 	 * @return
@@ -29,8 +38,5 @@ public abstract class AbstractOperatingSystem {
 	 * @return
 	 */
 	public abstract String getDetailedString();
-	
-	public DesktopEnvironment getDesktopEnvironment() {
-		return DEDetector.detect();
-	}
+
 }

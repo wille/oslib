@@ -58,7 +58,7 @@ public class Icons {
 			if (d == null || d != null && d == Distro.UNKNOWN) {
 				icon = "os_linux";
 			} else {
-				icon = "dist_" + d.getName().toLowerCase().replace(" ", "");
+				icon = "dist_" + d.getName().toLowerCase().replace(" ", "").replace("linux", "");
 			}
 		} else if (os.getType() == OperatingSystem.BSD) {
 			BSDOperatingSystem bos = (BSDOperatingSystem) os;

@@ -21,6 +21,8 @@ public enum OperatingSystem {
 	SOLARIS("Solaris", "solaris", "sunos"),
 	BSD("BSD"),
 	UNKNOWN("unknown", "unknown");
+	
+	private static AbstractOperatingSystem cache;
 		
 	private String name;
 	private String[] search;
@@ -82,37 +84,42 @@ public enum OperatingSystem {
 	 * @return
 	 */
 	public static AbstractOperatingSystem getOperatingSystem(boolean b) {
-		Flavor flavor = FlavorDetector.detect(b);
-		
 		AbstractOperatingSystem os = null;
 		
-		if (flavor != null) {
-			os = new BSDOperatingSystem(flavor);
-		}
-				
-		if (LinuxDetector.detect(b)) {
-			os = new LinuxOperatingSystem(DistroDetector.detect());
-		}
-		
-		if (OSXDetector.detect(b)) {
-			os = new OSXOperatingSystem();
-		}
-		
-		if (WindowsDetector.detect(b)) {
-			os = new WindowsOperatingSystem();
-		}
-		
-		if (SolarisDetector.detect(b)) {
-			os = new SolarisOperatingSystem();
-		}
+		if (cache == null) {
+			Flavor flavor = FlavorDetector.detect(b);
+						
+			if (flavor != null) {
+				os = new BSDOperatingSystem(flavor);
+			}
+					
+			if (LinuxDetector.detect(b)) {
+				os = new LinuxOperatingSystem(DistroDetector.detect());
+			}
+			
+			if (OSXDetector.detect(b)) {
+				os = new OSXOperatingSystem();
+			}
+			
+			if (WindowsDetector.detect(b)) {
+				os = new WindowsOperatingSystem();
+			}
+			
+			if (SolarisDetector.detect(b)) {
+				os = new SolarisOperatingSystem();
+			}
 
-		if (os == null) {
-			os = new UnknownOperatingSystem();
-		}
-		
-		if (os instanceof UnixOperatingSystem) {
-			UnixOperatingSystem uos = (UnixOperatingSystem) os;
-			uos.setDetailed(Utils.getUname());
+			if (os == null) {
+				os = new UnknownOperatingSystem();
+			}
+			
+			if (os instanceof UnixOperatingSystem) {
+				UnixOperatingSystem uos = (UnixOperatingSystem) os;
+				uos.setDetailed(Utils.getUname());
+			}
+			cache = os;
+		} else {
+			os = cache;
 		}
 		
 		return os;

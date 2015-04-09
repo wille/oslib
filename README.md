@@ -78,7 +78,7 @@ Linux distro and BSD flavor detection after 1.0 is based on [screenFetch](https:
 - [ ] LinuxDeepin
 - [ ] Chakra
 - [ ] Trisquel
-- [ ] Manjaro
+- [x] Manjaro
 - [x] elementary OS
 - [ ] Scientific Linux
 - [x] Kali Linux

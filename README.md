@@ -84,5 +84,11 @@ Linux distro and BSD flavor detection after 1.0 is based on [screenFetch](https:
 - [x] Kali Linux
 - [ ] Sabayon
 - [ ] NixOS
+- [ ] Crux
+- [ ] Lunar Linux
+- [ ] BLAG
+- [ ] gNewSense
+- [ ] Dragora
+- [ ] Chapeau
 - [x] Linux (If no distro detected or failed to detect)
 - [x] Solaris

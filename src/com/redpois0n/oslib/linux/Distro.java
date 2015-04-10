@@ -48,6 +48,7 @@ public enum Distro {
 	CRUX("Crux", new CommandExistsType("crux")),
 	GNEWSENSE("gNewSense", new FileContainsType("/etc/issue", "gNewSense")),
 	DRAGORA("Dragora", new FileExistsType("/etc/dragora-version")),
+	CHAPEAU("Chapeau"),
 	UNKNOWN("Unknown");
 	
 	private String name;

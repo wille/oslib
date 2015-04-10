@@ -4,15 +4,19 @@ public enum DesktopEnvironment {
 	
 	GNOME("GNOME"),
 	BUDGIE("Budgie"),
+	ENLIGHTEMENT("Enlightement"),
 	KDE("KDE"),
 	KDE4("KDE4"),
 	KDE5("KDE5"),
 	MATE("Mate"),
 	UNITY("Unity"),
 	CINNAMON("Cinnamon"),
+	LUMINA("Lumina"),
 	AQUA("Aqua"),
 	AERO("Aero"),
 	LUNA("Luna"),
+	LXDE("LXDE"),
+	XFCE("XFCE"),
 	UNKNOWN("Unknown");
 	
 	private String search;

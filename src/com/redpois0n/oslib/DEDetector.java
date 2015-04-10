@@ -23,8 +23,19 @@ public class DEDetector {
 		} else if (os.getType() == OperatingSystem.OSX) {
 			de = DesktopEnvironment.AQUA;
 		} else {
-			if (isSet("XDG_CURRENT_DESKTOP") && System.getenv("XDG_CURRENT_DESKTOP").equals("X-Cinnamon")) {
-				de = DesktopEnvironment.CINNAMON;
+			if (isSet("XDG_CURRENT_DESKTOP")) {
+				String env = System.getenv("XDG_CURRENT_DESKTOP");
+				if (env.equals("X-Cinnamon")) {
+					de = DesktopEnvironment.CINNAMON;
+				} else if (env.equalsIgnoreCase("Enlightement")) {
+					de = DesktopEnvironment.ENLIGHTEMENT;
+				} else if (env.equalsIgnoreCase("LXDE")) {
+					de = DesktopEnvironment.LXDE;
+				} else if (env.equalsIgnoreCase("XFCE")) {
+					de = DesktopEnvironment.XFCE;
+				} else if (env.equalsIgnoreCase("Lumina")) {
+					de = DesktopEnvironment.LUMINA;
+				}
 			} else if (isSet("GNOME_DESKTOP_SESSION_ID")) {
 				de = DesktopEnvironment.GNOME;
 				

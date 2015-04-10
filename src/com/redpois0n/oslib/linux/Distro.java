@@ -47,6 +47,7 @@ public enum Distro {
 	VIPERR("Viperr"),
 	CRUX("Crux", new CommandExistsType("crux")),
 	GNEWSENSE("gNewSense", new FileContainsType("/etc/issue", "gNewSense")),
+	DRAGORA("Dragora", new FileExistsType("/etc/dragora-version")),
 	UNKNOWN("Unknown");
 	
 	private String name;

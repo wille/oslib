@@ -7,6 +7,7 @@ public enum Distro {
 	ALPINE("Alpine Linux", "alpine", new FileExistsType("/etc/arch-release")),
 	ANTERGOS("Antergos"),
 	ARCH_LINUX("Arch Linux", "archlinux", "archarm"),
+	BLAG("BLAG"),
 	CHAKRA("Chakra", new FileExistsType("/etc/chakra-release")),
 	CENTOS("CentOS", new FileExistsType("/etc/centos-release"), new FileContainsType("/etc/redhat-release", "CentOS")),
 	CRUNCHBANG("Crunchbang", new FileExistsType("/etc/crunchbang-lsb-release"), new FileExistsType("/etc/lsb-release-crunchbang")),

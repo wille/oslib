@@ -30,6 +30,7 @@ public enum Distro {
 	MINT("Linux Mint", "LinuxMint", "mint"),
 	NIXOS("NixOS", new FileExistsType("/etc/NIXOS")),
 	LMDE("LMDE"),
+	LUNAR("Lunar Linux", "Lunar"),
 	OPENSUSE("openSUSE", "SUSE LINUX", "openSUSE project", new FileExistsType("/etc/SuSE-release")),
 	PARABOLA("Parabola", "Parabola GNU/Linux-libre", new FileContainsType("/etc/issue", "Parabola GNU/Linux-libre")),
 	PEPPERMINT("Peppermint"),

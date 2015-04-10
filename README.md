@@ -83,5 +83,6 @@ Linux distro and BSD flavor detection after 1.0 is based on [screenFetch](https:
 - [ ] Scientific Linux
 - [x] Kali Linux
 - [ ] Sabayon
+- [ ] NixOS
 - [x] Linux (If no distro detected or failed to detect)
 - [x] Solaris

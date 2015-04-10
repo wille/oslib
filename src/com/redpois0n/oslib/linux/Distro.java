@@ -28,6 +28,7 @@ public enum Distro {
 	MANDRAKE("Mandrake", new FileExistsType("/etc/mandrake-release")),
 	MANJARO("Manjaro", "ManjaroLinux"),
 	MINT("Linux Mint", "LinuxMint", "mint"),
+	NIXOS("NixOS", new FileExistsType("/etc/NIXOS")),
 	LMDE("LMDE"),
 	OPENSUSE("openSUSE", "SUSE LINUX", "openSUSE project", new FileExistsType("/etc/SuSE-release")),
 	PARABOLA("Parabola", "Parabola GNU/Linux-libre", new FileContainsType("/etc/issue", "Parabola GNU/Linux-libre")),

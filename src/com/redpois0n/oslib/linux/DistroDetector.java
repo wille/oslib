@@ -152,7 +152,16 @@ public class DistroDetector {
 							}
 						}
 					}
-				}		
+				}
+				
+				if (distro == Distro.NIXOS) {					
+					try {
+						List<String> nixVersion = Utils.readProcess(new String[] { "nixos-version" });
+						release = nixVersion.get(0);
+					} catch (Exception ex) {
+						ex.printStackTrace();
+					}
+				}
 
 				if (distro != null) {
 					DistroSpec spec = new DistroSpec(distro);

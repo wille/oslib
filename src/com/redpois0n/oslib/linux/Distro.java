@@ -46,6 +46,7 @@ public enum Distro {
 	UBUNTU("Ubuntu"),
 	VIPERR("Viperr"),
 	CRUX("Crux", new CommandExistsType("crux")),
+	GNEWSENSE("gNewSense", new FileContainsType("/etc/issue", "gNewSense")),
 	UNKNOWN("Unknown");
 	
 	private String name;

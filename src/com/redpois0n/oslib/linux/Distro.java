@@ -43,6 +43,7 @@ public enum Distro {
 	TRISQUEL("Trisquel"),
 	UBUNTU("Ubuntu"),
 	VIPERR("Viperr"),
+	CRUX("Crux", new CommandExistsType("crux")),
 	UNKNOWN("Unknown");
 	
 	private String name;

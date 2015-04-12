@@ -1,7 +1,5 @@
 package com.redpois0n.oslib;
 
-import java.util.List;
-
 import com.redpois0n.oslib.windows.WindowsOperatingSystem;
 import com.redpois0n.oslib.windows.WindowsVersion;
 
@@ -35,36 +33,11 @@ public class DEDetector {
 					de = DesktopEnvironment.XFCE;
 				} else if (env.equalsIgnoreCase("Lumina")) {
 					de = DesktopEnvironment.LUMINA;
+				} else if (env.equalsIgnoreCase("Unity")) {
+					de = DesktopEnvironment.UNITY;
 				}
 			} else if (isSet("GNOME_DESKTOP_SESSION_ID")) {
 				de = DesktopEnvironment.GNOME;
-				
-				boolean exists = false;
-				
-				try {
-					exists = Utils.readProcess(new String[] { "type", "-p", "xprop" }).size() > 0;
-					
-					if (exists) {
-						List<String> unity = Utils.readProcess(new String[] { "xprop", "-name", "unity-launcher" });
-						
-						if (!unity.get(0).toLowerCase().contains("error")) {
-							de = DesktopEnvironment.UNITY;
-							de.setVersion(Utils.readProcess(new String[] { "unity", "--version" }).get(0).split(" ")[0]);
-						} else {
-							unity = Utils.readProcess(new String[] { "xprop", "-name", "launcher" });
-							
-							if (!unity.get(0).toLowerCase().contains("error")) {
-								unity = Utils.readProcess(new String[] { "xprop", "-name", "panel" });
-								if (!unity.get(0).toLowerCase().contains("error")) {
-									de = DesktopEnvironment.UNITY;
-									de.setVersion(Utils.readProcess(new String[] { "unity", "--version" }).get(0).split(" ")[0]);
-								}
-							}
-						}
-					}
-				} catch (Exception ex) {
-					ex.printStackTrace();
-				}
 				
 				if (de == DesktopEnvironment.GNOME) {
 					String version = null;

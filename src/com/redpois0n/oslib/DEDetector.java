@@ -43,14 +43,14 @@ public class DEDetector {
 					String version = null;
 					
 					try {
-						version = Utils.readProcess(new String[] { "gnome-session-properties", "--version" }).get(0).split(" ")[0];
+						version = Utils.readProcess(new String[] { "gnome-session-properties", "--version" }).get(0).split(" ")[1];
 					} catch (Exception ex) {
 						ex.printStackTrace();
 					}
 					
 					if (version == null) {
 						try {
-							version = Utils.readProcess(new String[] { "gnome-session", "--version" }).get(0).split(" ")[0];
+							version = Utils.readProcess(new String[] { "gnome-session", "--version" }).get(0).split(" ")[1];
 						} catch (Exception ex) {
 							ex.printStackTrace();
 						}

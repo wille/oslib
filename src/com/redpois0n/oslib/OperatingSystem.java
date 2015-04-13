@@ -125,6 +125,13 @@ public enum OperatingSystem {
 		return os;
 	}
 	
+	/**
+	 * Forces reloading of data next time retreiving operating system
+	 */
+	public static void clearCache() {
+		cache = null;
+	}
+	
 	public static boolean isUnix() {
 		return isUnix(getOperatingSystem().getType());
 	}

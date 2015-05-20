@@ -47,5 +47,9 @@ public abstract class AbstractOperatingSystem {
 	 * @return
 	 */
 	public abstract String getDetailedString();
+	
+	public final boolean isUnix() {
+		return type == OperatingSystem.BSD || type == OperatingSystem.OSX || type == OperatingSystem.LINUX || type == OperatingSystem.SOLARIS;
+	}
 
 }

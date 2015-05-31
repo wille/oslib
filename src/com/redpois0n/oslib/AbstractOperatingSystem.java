@@ -1,7 +1,11 @@
 package com.redpois0n.oslib;
 
+import java.io.Serializable;
 
-public abstract class AbstractOperatingSystem {
+
+public abstract class AbstractOperatingSystem implements Serializable {
+
+	private static final long serialVersionUID = 7993846066826992068L;
 	
 	protected OperatingSystem type;
 	protected Arch arch;

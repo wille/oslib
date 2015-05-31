@@ -1,11 +1,15 @@
 package com.redpois0n.oslib.linux;
 
+import java.io.Serializable;
+
 import com.redpois0n.oslib.Arch;
 import com.redpois0n.oslib.OperatingSystem;
 import com.redpois0n.oslib.UnixOperatingSystem;
 
-public class LinuxOperatingSystem extends UnixOperatingSystem {
+public class LinuxOperatingSystem extends UnixOperatingSystem implements Serializable {
 
+	private static final long serialVersionUID = -1997336870542013705L;
+	
 	private DistroSpec ds;
 	
 	public LinuxOperatingSystem(Distro d) {

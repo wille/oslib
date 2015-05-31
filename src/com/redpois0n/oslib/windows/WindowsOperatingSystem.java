@@ -1,11 +1,15 @@
 package com.redpois0n.oslib.windows;
 
+import java.io.Serializable;
+
 import com.redpois0n.oslib.AbstractOperatingSystem;
 import com.redpois0n.oslib.Arch;
 import com.redpois0n.oslib.OperatingSystem;
 
-public class WindowsOperatingSystem extends AbstractOperatingSystem {
+public class WindowsOperatingSystem extends AbstractOperatingSystem implements Serializable {
 
+	private static final long serialVersionUID = 3629947448937163693L;
+	
 	private WindowsVersion version;
 	
 	public WindowsOperatingSystem() {

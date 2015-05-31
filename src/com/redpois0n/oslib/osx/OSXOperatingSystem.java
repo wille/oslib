@@ -1,11 +1,15 @@
 package com.redpois0n.oslib.osx;
 
+import java.io.Serializable;
+
 import com.redpois0n.oslib.Arch;
 import com.redpois0n.oslib.OperatingSystem;
 import com.redpois0n.oslib.UnixOperatingSystem;
 
-public class OSXOperatingSystem extends UnixOperatingSystem {
+public class OSXOperatingSystem extends UnixOperatingSystem implements Serializable {
 
+	private static final long serialVersionUID = 1929142018487788734L;
+	
 	private OSXVersion version;
 	
 	public OSXOperatingSystem() {

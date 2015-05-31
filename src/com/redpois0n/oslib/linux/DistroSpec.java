@@ -1,7 +1,11 @@
 package com.redpois0n.oslib.linux;
 
+import java.io.Serializable;
 
-public class DistroSpec {
+
+public class DistroSpec implements Serializable {
+	
+	private static final long serialVersionUID = 6006116784555675971L;
 	
 	private Distro d;
 	private String release;

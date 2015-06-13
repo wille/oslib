@@ -1,5 +1,6 @@
 # oslib
-Java library to easily detect running Operating System, Linux dist, architecture and BSD flavor
+
+Java library to easily detect running Operating System, BSD Flavor, Linux Distribution, Desktop Environment and Architecture
 
 ## Examples
 

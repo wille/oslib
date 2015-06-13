@@ -71,7 +71,7 @@ Linux distro and BSD flavor detection after 1.0 is based on [screenFetch](https:
 - [ ] Slackware
 - [ ] Red Hat (RHEL)
 - [ ] Frugalware
-- [ ] Peppermint
+- [x] Peppermint
 - [ ] SolusOS
 - [ ] Mageia
 - [ ] ParabolaGNU/Linux-libre

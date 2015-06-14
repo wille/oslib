@@ -12,7 +12,8 @@ public enum OSXVersion {
 	LION("Lion", "10.7"),
 	MOUNTAIN_LION("Mountain Lion", "10.8"),
 	MAVERICKS("Mavericks", "10.9"),
-	YOSEMITE("Yosemite", "10.10");
+	YOSEMITE("Yosemite", "10.10"),
+	YOSEMITE("El Capitan", "10.11");
 	
 	private String search;
 	private String version;

@@ -63,7 +63,7 @@ Linux distro and BSD flavor detection after 1.0 is based on [screenFetch](https:
 - [ ] Gentoo
 - [ ] Funtoo
 - [x] FreeBSD
-- [ ] OpenBSD
+- [x] OpenBSD
 - [ ] NetBSD
 - [ ] DragonFlyBSD
 - [x] OpenSUSE

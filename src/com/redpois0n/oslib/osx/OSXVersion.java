@@ -1,6 +1,8 @@
 package com.redpois0n.oslib.osx;
 
-public enum OSXVersion {
+import com.redpois0n.oslib.VersionCompare;
+
+public enum OSXVersion implements VersionCompare {
 	
 	CHEETAH("Cheetah", "10.0"),
 	PUMA("Puma", "10.1"),
@@ -72,4 +74,13 @@ public enum OSXVersion {
 		return null;
 	}
 
+	@Override
+	public boolean isNewer(Enum<?> e) {
+		return e.ordinal() > this.ordinal();
+	}
+
+	@Override
+	public boolean isOlder(Enum<?> e) {
+		return e.ordinal() < this.ordinal();
+	}
 }

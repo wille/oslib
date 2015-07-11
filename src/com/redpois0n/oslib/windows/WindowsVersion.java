@@ -1,6 +1,8 @@
 package com.redpois0n.oslib.windows;
 
-public enum WindowsVersion {
+import com.redpois0n.oslib.VersionCompare;
+
+public enum WindowsVersion implements VersionCompare {
 	
 	UNKNOWN("Unknown Windows"),
 	WIN2000("Windows 2000"),
@@ -47,5 +49,14 @@ public enum WindowsVersion {
 		return UNKNOWN;
 	}
 
+	@Override
+	public boolean isNewer(Enum<?> e) {
+		return e.ordinal() > this.ordinal();
+	}
+
+	@Override
+	public boolean isOlder(Enum<?> e) {
+		return e.ordinal() < this.ordinal();
+	}
 
 }

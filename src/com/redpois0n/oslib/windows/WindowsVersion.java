@@ -51,12 +51,12 @@ public enum WindowsVersion implements VersionCompare {
 
 	@Override
 	public boolean isNewer(Enum<?> e) {
-		return e.ordinal() > this.ordinal();
+		return this.ordinal() > e.ordinal();
 	}
 
 	@Override
 	public boolean isOlder(Enum<?> e) {
-		return e.ordinal() < this.ordinal();
+		return this.ordinal() < e.ordinal();
 	}
 
 }

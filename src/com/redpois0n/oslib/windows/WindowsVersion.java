@@ -14,7 +14,7 @@ public enum WindowsVersion implements VersionCompare {
 	WIN81("Windows 8.1"),
 	WIN8("Windows 8"),
 	WINSERVER2012("Windows Server 2012"),
-	WIN10("Windows 10"); // NOT BEING DETECTED BY THE JVM! os.name returns 8.1!
+	WIN10("Windows 10");
 	
 	private String search;
 	

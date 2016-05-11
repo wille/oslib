@@ -91,5 +91,8 @@ Linux distro and BSD flavor detection after 1.0 is based on [screenFetch](https:
 - [ ] gNewSense
 - [ ] Dragora
 - [ ] Chapeau
+- [ ] KDE neon
+- [ ] Oracle Linux
+- [ ] Qubes
 - [x] Linux (If no distro detected or failed to detect)
 - [x] Solaris

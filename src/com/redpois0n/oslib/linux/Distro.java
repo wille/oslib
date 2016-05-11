@@ -49,6 +49,8 @@ public enum Distro {
 	GNEWSENSE("gNewSense", new FileContainsType("/etc/issue", "gNewSense")),
 	DRAGORA("Dragora", new FileExistsType("/etc/dragora-version")),
 	CHAPEAU("Chapeau"),
+	KDE_NEON("neon", "KDE neon"),
+	ORACLE_LINUX("Oracle Linux", "ol", "Ol", new FileExistsType("/etc/oracle-release"), new FileContainsType("/etc/system-release", "Oracle Linux")),
 	UNKNOWN("Unknown");
 	
 	private String name;

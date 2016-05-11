@@ -51,6 +51,7 @@ public enum Distro {
 	CHAPEAU("Chapeau"),
 	KDE_NEON("neon", "KDE neon"),
 	ORACLE_LINUX("Oracle Linux", "ol", "Ol", new FileExistsType("/etc/oracle-release"), new FileContainsType("/etc/system-release", "Oracle Linux")),
+	QUBES("Qubes", new FileExistsType("/etc/qubes-rpc")),
 	UNKNOWN("Unknown");
 	
 	private String name;

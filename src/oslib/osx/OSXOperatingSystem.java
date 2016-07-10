@@ -37,12 +37,14 @@ public class OSXOperatingSystem extends UnixOperatingSystem implements Serializa
 	public String getDisplayString() {
 		String s = "Mac OS X";
 
-		if (version.getDisplay() != null) {
-			s += " " + version.getDisplay();
-		}
+		if (version != null) {
+			if (version.getDisplay() != null) {
+				s += " " + version.getDisplay();
+			}
 
-		if (version.getVersion() != null) {
-			s += " " + version.getVersion();
+			if (version.getVersion() != null) {
+				s += " " + version.getVersion();
+			}
 		}
 
 		return s;

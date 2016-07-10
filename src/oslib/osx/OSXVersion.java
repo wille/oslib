@@ -16,7 +16,7 @@ public enum OSXVersion implements VersionCompare {
 	MAVERICKS("Mavericks", "10.9"),
 	YOSEMITE("Yosemite", "10.10"),
 	EL_CAPITAN("El Capitan", "10.11");
-	
+
 	private String search;
 	private String version;
 	
@@ -51,12 +51,13 @@ public enum OSXVersion implements VersionCompare {
 	
 	/**
 	 * Gets OSXVersion from string
+	 * Will detect "10.11.*" if parameter search is is "10.11"
 	 * @param search Can either be version or display name ("10.10", "yosemite")
 	 * @return
 	 */
 	public static OSXVersion getFromString(String search) {
 		for (OSXVersion v : OSXVersion.values()) {
-			if (v.getVersion().equalsIgnoreCase(search) || v.getDisplay().toLowerCase().contains(search.toLowerCase())) {
+			if (search.startsWith(v.getVersion()) || v.getDisplay().toLowerCase().contains(search.toLowerCase())) {
 				return v;
 			}
 		}

@@ -1,5 +1,5 @@
-package oslib;
-
+import oslib.AbstractOperatingSystem;
+import oslib.OperatingSystem;
 import oslib.bsd.BSDOperatingSystem;
 import oslib.linux.DistroSpec;
 import oslib.linux.LinuxOperatingSystem;

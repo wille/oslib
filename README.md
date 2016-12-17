@@ -52,7 +52,7 @@ if (os.getType() == OperatingSystem.LINUX) {
 _Note:_ These are the only ones I have tested with. Will work well on untested systems, but the checked ones are absolutely working.
 Linux distro and BSD flavor detection after 1.0 is based on [screenFetch](https://github.com/KittyKatt/screenFetch)
 
-- [x] Mac OS X
+- [x] macOS ~~Mac OS X~~
 - [x] Windows
 - [ ] Arch Linux
 - [x] Fedora

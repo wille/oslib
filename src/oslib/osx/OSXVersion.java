@@ -4,25 +4,32 @@ import oslib.VersionCompare;
 
 public enum OSXVersion implements VersionCompare {
 
-    CHEETAH("Cheetah", "10.0"),
-    PUMA("Puma", "10.1"),
-    JAGUAR("Jaguar", "10.2"),
-    PANTHER("Panther", "10.3"),
-    TIGER("Tiger", "10.4"),
-    LEOPARD("Leopard", "10.5"),
-    SNOW_LEOPARD("Snow Leopard", "10.6"),
-    LION("Lion", "10.7"),
-    MOUNTAIN_LION("Mountain Lion", "10.8"),
-    MAVERICKS("Mavericks", "10.9"),
-    YOSEMITE("Yosemite", "10.10"),
-    EL_CAPITAN("El Capitan", "10.11");
+    CHEETAH("Cheetah", "10.0", true),
+    PUMA("Puma", "10.1", true),
+    JAGUAR("Jaguar", "10.2", true),
+    PANTHER("Panther", "10.3", true),
+    TIGER("Tiger", "10.4", true),
+    LEOPARD("Leopard", "10.5", true),
+    SNOW_LEOPARD("Snow Leopard", "10.6", true),
+    LION("Lion", "10.7", true),
+    MOUNTAIN_LION("Mountain Lion", "10.8", true),
+    MAVERICKS("Mavericks", "10.9", true),
+    YOSEMITE("Yosemite", "10.10", true),
+    EL_CAPITAN("El Capitan", "10.11", true),
+    SIERRA("Sierra", "10.12");
 
     private String search;
     private String version;
+    private boolean isX;
 
     private OSXVersion(String search, String version) {
+        this(search, version, false);
+    }
+
+    private OSXVersion(String search, String version, boolean isX) {
         this.search = search;
         this.version = version;
+        this.isX = isX;
     }
 
     /**
@@ -41,6 +48,14 @@ public enum OSXVersion implements VersionCompare {
      */
     public String getVersion() {
         return version;
+    }
+
+    /**
+     * Indicates if this is Mac OS X or the newer macOS
+     * @return if Mac OS X (<= 10.11)
+     */
+    public boolean isOSX() {
+        return this.isX;
     }
 
     /**

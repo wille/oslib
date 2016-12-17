@@ -6,8 +6,8 @@ import oslib.bsd.FlavorDetector;
 import oslib.linux.DistroDetector;
 import oslib.linux.LinuxDetector;
 import oslib.linux.LinuxOperatingSystem;
-import oslib.osx.OSXDetector;
-import oslib.osx.OSXOperatingSystem;
+import oslib.macos.MacOSDetector;
+import oslib.macos.MacOSOperatingSystem;
 import oslib.solaris.SolarisDetector;
 import oslib.solaris.SolarisOperatingSystem;
 import oslib.windows.WindowsDetector;
@@ -16,7 +16,7 @@ import oslib.windows.WindowsOperatingSystem;
 public enum OperatingSystem {
 
 	WINDOWS("Windows", "win"),
-	OSX("Mac OS X", "mac"),
+	MACOS("macOS", "mac"),
 	LINUX("Linux", "linux"),
 	SOLARIS("Solaris", "solaris", "sunos"),
 	BSD("BSD"),
@@ -97,8 +97,8 @@ public enum OperatingSystem {
 				os = new LinuxOperatingSystem(DistroDetector.detect());
 			}
 			
-			if (OSXDetector.detect(b)) {
-				os = new OSXOperatingSystem();
+			if (MacOSDetector.detect(b)) {
+				os = new MacOSOperatingSystem();
 			}
 			
 			if (WindowsDetector.detect(b)) {
@@ -137,7 +137,7 @@ public enum OperatingSystem {
 	}
 	
 	public static boolean isUnix(OperatingSystem os) {
-		return os == BSD || os == OSX || os == LINUX || os == SOLARIS;
+		return os == BSD || os == MACOS || os == LINUX || os == SOLARIS;
 	}
 
 }

@@ -1,4 +1,4 @@
-package oslib.osx;
+package oslib.macos;
 
 import java.io.File;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import oslib.OperatingSystem;
 import oslib.Utils;
 
-public class OSXDetector {
+public class MacOSDetector {
 	
 	public static boolean detect(boolean fallback) {
 		File file = new File("/usr/bin/sw_vers");
@@ -15,7 +15,7 @@ public class OSXDetector {
 			List<String> lines = Utils.readFile(file);
 			
 			for (String line : lines) {
-				if (line.contains(OperatingSystem.OSX.getName())) {
+				if (line.contains(OperatingSystem.MACOS.getName())) {
 					return true;
 				}
 			}
@@ -24,7 +24,9 @@ public class OSXDetector {
 		}
 		
 		if (fallback) {
-			return System.getProperty("os.name").toLowerCase().contains(OperatingSystem.OSX.getPrimarySearch());
+			String os = System.getProperty("os.name").toLowerCase();
+
+			return os.contains("mac os x") || os.contains("macos");
 		}
 		
 		return false;

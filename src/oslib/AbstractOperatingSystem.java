@@ -53,7 +53,7 @@ public abstract class AbstractOperatingSystem implements Serializable {
 	public abstract String getDetailedString();
 	
 	public final boolean isUnix() {
-		return type == OperatingSystem.BSD || type == OperatingSystem.OSX || type == OperatingSystem.LINUX || type == OperatingSystem.SOLARIS;
+		return type == OperatingSystem.BSD || type == OperatingSystem.MACOS || type == OperatingSystem.LINUX || type == OperatingSystem.SOLARIS;
 	}
 
 }

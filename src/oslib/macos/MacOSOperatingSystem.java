@@ -1,4 +1,4 @@
-package oslib.osx;
+package oslib.macos;
 
 import java.io.Serializable;
 
@@ -6,30 +6,30 @@ import oslib.Arch;
 import oslib.OperatingSystem;
 import oslib.UnixOperatingSystem;
 
-public class OSXOperatingSystem extends UnixOperatingSystem implements Serializable {
+public class MacOSOperatingSystem extends UnixOperatingSystem implements Serializable {
 
 	private static final long serialVersionUID = 1929142018487788734L;
 	
-	private OSXVersion version;
+	private MacOSVersion version;
 	
-	public OSXOperatingSystem() {
-		this(OSXVersion.getFromString());
+	public MacOSOperatingSystem() {
+		this(MacOSVersion.getFromString());
 	}
 	
-	public OSXOperatingSystem(OSXVersion version, Arch arch) {
-		super(OperatingSystem.OSX, arch);
+	public MacOSOperatingSystem(MacOSVersion version, Arch arch) {
+		super(OperatingSystem.MACOS, arch);
 		this.version = version;
 	}
 	
-	public OSXOperatingSystem(OSXVersion version) {
+	public MacOSOperatingSystem(MacOSVersion version) {
 		this(version, Arch.getArch());
 	}
 	
-	public void setVersion(OSXVersion version) {
+	public void setVersion(MacOSVersion version) {
 		this.version = version;
 	}
 
-	public OSXVersion getVersion() {
+	public MacOSVersion getVersion() {
 		return this.version;
 	}
 

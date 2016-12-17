@@ -18,7 +18,7 @@ public class DEDetector {
 			} else {
 				de = DesktopEnvironment.LUNA;
 			}
-		} else if (os.getType() == OperatingSystem.OSX) {
+		} else if (os.getType() == OperatingSystem.MACOS) {
 			de = DesktopEnvironment.AQUA;
 		} else {
 			if (isSet("XDG_CURRENT_DESKTOP")) {

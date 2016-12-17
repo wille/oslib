@@ -1,8 +1,8 @@
-package oslib.osx;
+package oslib.macos;
 
 import oslib.VersionCompare;
 
-public enum OSXVersion implements VersionCompare {
+public enum MacOSVersion implements VersionCompare {
 
     CHEETAH("Cheetah", "10.0", true),
     PUMA("Puma", "10.1", true),
@@ -22,11 +22,11 @@ public enum OSXVersion implements VersionCompare {
     private String version;
     private boolean isX;
 
-    private OSXVersion(String search, String version) {
+    private MacOSVersion(String search, String version) {
         this(search, version, false);
     }
 
-    private OSXVersion(String search, String version, boolean isX) {
+    private MacOSVersion(String search, String version, boolean isX) {
         this.search = search;
         this.version = version;
         this.isX = isX;
@@ -59,23 +59,23 @@ public enum OSXVersion implements VersionCompare {
     }
 
     /**
-     * Gets OSXVersion for this machine
+     * Gets MacOSVersion for this machine
      *
      * @return
      */
-    public static OSXVersion getFromString() {
+    public static MacOSVersion getFromString() {
         return getFromString(System.getProperty("os.version"));
     }
 
     /**
-     * Gets OSXVersion from string
+     * Gets MacOSVersion from string
      * Will detect "10.11.*" if parameter search is is "10.11"
      *
      * @param search Can either be version or display name ("10.10", "yosemite")
      * @return
      */
-    public static OSXVersion getFromString(String search) {
-        for (OSXVersion v : OSXVersion.values()) {
+    public static MacOSVersion getFromString(String search) {
+        for (MacOSVersion v : MacOSVersion.values()) {
             if (search.startsWith(v.getVersion()) || v.getDisplay().toLowerCase().contains(search.toLowerCase())) {
                 return v;
             }
@@ -84,8 +84,8 @@ public enum OSXVersion implements VersionCompare {
         return null;
     }
 
-    public static OSXVersion getExact(String display, String version) {
-        for (OSXVersion v : OSXVersion.values()) {
+    public static MacOSVersion getExact(String display, String version) {
+        for (MacOSVersion v : MacOSVersion.values()) {
             if (v.getDisplay().equals(display) && v.getVersion().equals(version)) {
                 return v;
             }

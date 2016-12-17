@@ -3,7 +3,7 @@ import oslib.OperatingSystem;
 import oslib.bsd.BSDOperatingSystem;
 import oslib.linux.DistroSpec;
 import oslib.linux.LinuxOperatingSystem;
-import oslib.osx.OSXOperatingSystem;
+import oslib.macos.MacOSOperatingSystem;
 import oslib.solaris.SolarisOperatingSystem;
 import oslib.windows.WindowsOperatingSystem;
 
@@ -21,10 +21,10 @@ public class Debug {
 			WindowsOperatingSystem wos = (WindowsOperatingSystem) os;
 			
 			System.out.println("Windows Version: " + wos.getVersion().getSearch());
-		} else if (os.getType() == OperatingSystem.OSX) {
-			OSXOperatingSystem xos = (OSXOperatingSystem) os;
+		} else if (os.getType() == OperatingSystem.MACOS) {
+			MacOSOperatingSystem xos = (MacOSOperatingSystem) os;
 			
-			System.out.println("OSX Version: " + xos.getVersion().getDisplay() + ", " + xos.getVersion().getVersion());
+			System.out.println("macOS Version: " + xos.getVersion().getDisplay() + ", " + xos.getVersion().getVersion());
 		} else if (os.getType() == OperatingSystem.LINUX) {
 			LinuxOperatingSystem los = (LinuxOperatingSystem) os;
 			

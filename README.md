@@ -23,10 +23,10 @@ if (os.getType() == OperatingSystem.LINUX) {
 ```java
 AbstractOperatingSystem os = OperatingSystem.getOperatingSystem();
 
-if (os.getType() == OperatingSystem.OSX) {
-  	OSXOperatingSystem xos = (OSXOperatingSystem) os;
+if (os.getType() == OperatingSystem.MACOS) {
+  	MacOSOperatingSystem xos = (MacOSOperatingSystem) os;
    
-   	if (xos.getVersion() == OSXVersion.YOSEMITE) {
+   	if (xos.getVersion() == MacOSVersion.YOSEMITE) {
    		System.out.println("Is running Yosemite " + xos.getVersion().getVersion());
     	// Will print: Is running Yosemite 10.10
   	}

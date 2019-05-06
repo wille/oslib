@@ -13,7 +13,7 @@ public class LinuxOperatingSystem extends UnixOperatingSystem implements Seriali
     private final DistroSpec ds;
 
     public LinuxOperatingSystem(Distro d) {
-        this(new DistroSpec(d), Arch.getArch());
+        this(new DistroSpec(d), LinuxDetector.getArchLinux());
     }
 
     public LinuxOperatingSystem(DistroSpec ds, Arch arch) {
@@ -22,11 +22,11 @@ public class LinuxOperatingSystem extends UnixOperatingSystem implements Seriali
     }
 
     public LinuxOperatingSystem() {
-        this(Distro.getLocalDistroSpec(), Arch.getArch());
+        this(Distro.getLocalDistroSpec(), LinuxDetector.getArchLinux());
     }
 
     public LinuxOperatingSystem(DistroSpec ds) {
-        this(ds, Arch.getArch());
+        this(ds, LinuxDetector.getArchLinux());
     }
 
     public Distro getDistro() {

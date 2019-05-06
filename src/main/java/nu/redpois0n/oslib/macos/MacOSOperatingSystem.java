@@ -3,6 +3,7 @@ package nu.redpois0n.oslib.macos;
 import nu.redpois0n.oslib.Arch;
 import nu.redpois0n.oslib.OperatingSystem;
 import nu.redpois0n.oslib.UnixOperatingSystem;
+import nu.redpois0n.oslib.linux.LinuxDetector;
 
 import java.io.Serializable;
 
@@ -22,7 +23,7 @@ public class MacOSOperatingSystem extends UnixOperatingSystem implements Seriali
     }
 
     public MacOSOperatingSystem(MacOSVersion version) {
-        this(version, Arch.getArch());
+        this(version, LinuxDetector.getArchLinux());
     }
 
     public void setVersion(MacOSVersion version) {

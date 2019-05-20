@@ -13,7 +13,7 @@ public class WindowsOperatingSystem extends AbstractOperatingSystem implements S
     private final WindowsVersion version;
 
     public WindowsOperatingSystem() {
-        this(WindowsVersion.getFromString(), Arch.getArch());
+        this(WindowsVersion.getFromString(), WindowsDetector.getArchWindows());
     }
 
     public WindowsOperatingSystem(String name, Arch arch) {
@@ -21,7 +21,7 @@ public class WindowsOperatingSystem extends AbstractOperatingSystem implements S
     }
 
     public WindowsOperatingSystem(String name) {
-        this(WindowsVersion.getFromString(name), Arch.getArch());
+        this(WindowsVersion.getFromString(name), WindowsDetector.getArchWindows());
     }
 
     public WindowsOperatingSystem(WindowsVersion version, Arch arch) {
@@ -30,7 +30,7 @@ public class WindowsOperatingSystem extends AbstractOperatingSystem implements S
     }
 
     public WindowsOperatingSystem(WindowsVersion version) {
-        this(version, Arch.getArch());
+        this(version, WindowsDetector.getArchWindows());
     }
 
     public WindowsVersion getVersion() {

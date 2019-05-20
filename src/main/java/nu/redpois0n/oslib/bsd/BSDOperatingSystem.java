@@ -3,6 +3,7 @@ package nu.redpois0n.oslib.bsd;
 import nu.redpois0n.oslib.Arch;
 import nu.redpois0n.oslib.OperatingSystem;
 import nu.redpois0n.oslib.UnixOperatingSystem;
+import nu.redpois0n.oslib.linux.LinuxDetector;
 
 import java.io.Serializable;
 
@@ -18,11 +19,11 @@ public class BSDOperatingSystem extends UnixOperatingSystem implements Serializa
     }
 
     public BSDOperatingSystem() {
-        this(Flavor.getLocalFlavor(), Arch.getArch());
+        this(Flavor.getLocalFlavor(), LinuxDetector.getArchLinux());
     }
 
     public BSDOperatingSystem(Flavor flavor) {
-        this(flavor, Arch.getArch());
+        this(flavor, LinuxDetector.getArchLinux());
     }
 
     public Flavor getFlavor() {

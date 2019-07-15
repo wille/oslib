@@ -23,7 +23,7 @@ public class DistroDetector {
                 lsbRelease = Utils.readProcess(new String[]{"lsb_release", "-irc"});
                 lsbReleaseExists = lsbRelease.size() == 3;
             } catch (Exception ex) {
-                ex.printStackTrace();
+                System.out.println("Failed to execute lsb_release -irc");
             }
 
             Map<String, String> osreleaseMap = null;

@@ -124,7 +124,7 @@ public class DistroDetector {
                     }
                 }
 
-                if (distro == null && lsbreleaseMap != null) {
+                if (distro == null && lsbreleaseMap != null && osreleaseMap != null) {
                     String distribid = osreleaseMap.get("DISTRIB_ID");
 
                     if (distribid != null) {

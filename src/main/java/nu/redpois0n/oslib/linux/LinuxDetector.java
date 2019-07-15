@@ -19,7 +19,7 @@ public class LinuxDetector {
         return false;
     }
 
-    public static Arch getArchLinux() {
+    public static Arch getLinuxArch() {
         InputStream is = null;
         try {
             final Process process = Runtime.getRuntime().exec(new String[]{"uname", "-m"});

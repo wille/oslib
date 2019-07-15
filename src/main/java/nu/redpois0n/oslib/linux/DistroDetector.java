@@ -41,6 +41,19 @@ public class DistroDetector {
                 System.out.println("Failed to load /etc/lsb-release");
             }
 
+            // to detect older versions of centos (as centos 6), which don't have /etc/os-release
+            // CentOS Linux 6.10 (Final)
+            try {
+                List<String> lines = Utils.readFile(new File("/etc/centos-release"));
+                if (lines.size() > 0) {
+                    String content = lines.get(0);
+                    distro = Distro.CENTOS;
+                    release = content.split(" ")[2];
+                }
+            } catch (Exception ex) {
+                System.out.println("Failed to load /etc/centos-release");
+            }
+
             boolean b = false;
 
             for (Distro d : Distro.values()) {

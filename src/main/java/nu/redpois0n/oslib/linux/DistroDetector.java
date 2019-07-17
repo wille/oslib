@@ -23,7 +23,7 @@ public class DistroDetector {
                 lsbRelease = Utils.readProcess(new String[]{"lsb_release", "-irc"});
                 lsbReleaseExists = lsbRelease.size() == 3;
             } catch (Exception ex) {
-                ex.printStackTrace();
+                System.out.println("Failed to execute lsb_release -irc");
             }
 
             Map<String, String> osreleaseMap = null;
@@ -39,6 +39,19 @@ public class DistroDetector {
                 lsbreleaseMap = Utils.mapFile(new File("/etc/lsb-release"), "=");
             } catch (Exception ex) {
                 System.out.println("Failed to load /etc/lsb-release");
+            }
+
+            // to detect older versions of centos (as centos 6), which don't have /etc/os-release
+            // CentOS Linux 6.10 (Final)
+            try {
+                List<String> lines = Utils.readFile(new File("/etc/centos-release"));
+                if (lines.size() > 0) {
+                    String content = lines.get(0);
+                    distro = Distro.CENTOS;
+                    release = content.split(" ")[2];
+                }
+            } catch (Exception ex) {
+                System.out.println("Failed to load /etc/centos-release");
             }
 
             boolean b = false;
@@ -111,7 +124,7 @@ public class DistroDetector {
                     }
                 }
 
-                if (distro == null && lsbreleaseMap != null) {
+                if (distro == null && lsbreleaseMap != null && osreleaseMap != null) {
                     String distribid = osreleaseMap.get("DISTRIB_ID");
 
                     if (distribid != null) {

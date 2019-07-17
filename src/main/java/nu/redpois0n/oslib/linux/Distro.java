@@ -5,6 +5,7 @@ import nu.redpois0n.oslib.UnsupportedOperatingSystemException;
 public enum Distro {
 
     ALPINE("Alpine Linux", "alpine", new FileExistsType("/etc/arch-release")),
+    AMAZON("Amazon Linux", "amazon", new FileContainsType("/etc/os-release", "amzn")),
     ANTERGOS("Antergos"),
     ARCH_LINUX("Arch Linux", "archlinux", "archarm"),
     BLAG("BLAG"),

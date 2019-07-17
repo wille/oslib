@@ -16,7 +16,9 @@ public enum MacOSVersion implements VersionCompare {
     MAVERICKS("Mavericks", "10.9", true),
     YOSEMITE("Yosemite", "10.10", true),
     EL_CAPITAN("El Capitan", "10.11", true),
-    SIERRA("Sierra", "10.12");
+    SIERRA("Sierra", "10.12"),
+    HIGH_SIERRA("High Sierra", "10.13", true),
+    MOJAVE("Mojave", "10.14", true);
 
     private final String search;
     private final String version;
@@ -66,8 +68,33 @@ public enum MacOSVersion implements VersionCompare {
      * Gets MacOSVersion from string Will detect "10.11.*" if parameter search is is "10.11"
      */
     public static MacOSVersion getFromString(String search) {
+        // check for one with exact match
+        MacOSVersion exactRes = getExactFromVersion(search);
+        if (exactRes != null) {
+            return exactRes;
+        }
+
         for (MacOSVersion v : MacOSVersion.values()) {
             if (search.startsWith(v.getVersion()) || v.getDisplay().toLowerCase().contains(search.toLowerCase())) {
+                return v;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Gets MacOSVersion by doing an exact match on major and minor version.
+     * if parameter search is "10.14.5", look for "10.14", considering MacOS history of version numbers
+     */
+    public static MacOSVersion getExactFromVersion(String search) {
+        String[] versionSplit = search.split("\\.");
+        if (versionSplit.length >= 2) {
+            versionSplit = new String[]{versionSplit[0], versionSplit[1]};
+        }
+        String majorMinorVersion = String.join(".", versionSplit);
+        for (MacOSVersion v: MacOSVersion.values()) {
+            if (v.getVersion().equals(majorMinorVersion)) {
                 return v;
             }
         }

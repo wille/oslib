@@ -19,11 +19,11 @@ public class BSDOperatingSystem extends UnixOperatingSystem implements Serializa
     }
 
     public BSDOperatingSystem() {
-        this(Flavor.getLocalFlavor(), LinuxDetector.getArchLinux());
+        this(Flavor.getLocalFlavor(), LinuxDetector.getLinuxArch());
     }
 
     public BSDOperatingSystem(Flavor flavor) {
-        this(flavor, LinuxDetector.getArchLinux());
+        this(flavor, LinuxDetector.getLinuxArch());
     }
 
     public Flavor getFlavor() {

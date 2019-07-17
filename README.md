@@ -55,10 +55,12 @@ Linux distro and BSD flavor detection after 1.0 is based on [screenFetch](https:
 - [x] macOS ~~Mac OS X~~
 - [x] Windows
 - [ ] Arch Linux
+- [x] Amazon Linux
 - [x] Fedora
 - [x] Linux Mint
 - [x] Ubuntu
 - [x] Debian
+- [x] CentOS
 - [ ] Crunchbang
 - [ ] Gentoo
 - [ ] Funtoo
@@ -69,7 +71,7 @@ Linux distro and BSD flavor detection after 1.0 is based on [screenFetch](https:
 - [x] OpenSUSE
 - [ ] Mandriva/Mandrake
 - [ ] Slackware
-- [ ] Red Hat (RHEL)
+- [x] Red Hat (RHEL)
 - [ ] Frugalware
 - [x] Peppermint
 - [ ] SolusOS

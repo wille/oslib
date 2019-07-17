@@ -23,7 +23,7 @@ public class MacOSOperatingSystem extends UnixOperatingSystem implements Seriali
     }
 
     public MacOSOperatingSystem(MacOSVersion version) {
-        this(version, LinuxDetector.getArchLinux());
+        this(version, LinuxDetector.getLinuxArch());
     }
 
     public void setVersion(MacOSVersion version) {

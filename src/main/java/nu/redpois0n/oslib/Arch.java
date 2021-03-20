@@ -4,7 +4,7 @@ public enum Arch {
 
     x86("x86", "i386", "i486", "i586", "i686"),
     x86_64("x86_64", "amd64", "k8"),
-    ARM("ARM"),
+    ARM("ARM", "arm64"),
     UNKNOWN("Unknown");
 
     private final String[] search;
